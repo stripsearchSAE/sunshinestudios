@@ -1,6 +1,7 @@
 ﻿/********************************************************************
  *  Hey team. This script will move the player platform perfectly   *
- *  to the center of the action. All you need to do is drag the     *
+ *  to the center of the action. All you need to do is tag the      *
+ *   explorers with the tag "Explorers" (important),   drag the     *
  *  lava object and erruption viewing point into the inspector      *
  *  the script will do the rest. there is an offset value if you    *
  *  dont like where the platform sits. there is also dampening      *
