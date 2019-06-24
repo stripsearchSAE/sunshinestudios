@@ -1688,9 +1688,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c700c311d34b6f4bb1af20956f1dd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlatformState: 0
   Explorers: []
   platformDampening: 5
-  platformDampeningErruption: 3.5
+  platformDampeningErruption: 4
   platformOffset: 0
   Lava: {fileID: 628143465}
   erruptionViewPoint: {fileID: 1624701902}
@@ -1703,6 +1704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1624701902}
+  - component: {fileID: 1624701903}
   m_Layer: 0
   m_Name: ViewPoint
   m_TagString: Untagged
@@ -1718,12 +1720,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624701901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.2, z: -87}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 25.06, z: -129.88}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624701903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624701901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a626787b10d003147b437143a34eb4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GizmoRedValue: 1
+  GizmoGreenValue: 0.455
+  GizmoBlueValue: 0.747
+  GizmoSize: 1
+  changeGizmoToSphere: 1
 --- !u!1 &1652537590
 GameObject:
   m_ObjectHideFlags: 0

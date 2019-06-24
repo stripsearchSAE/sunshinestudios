@@ -19,44 +19,54 @@ using UnityEngine;
 
 public class PlayerPlatformScript : MonoBehaviour
 {
+    public enum States {ELEVATOR, ERRUPTION};
+    public States PlatformState;
+
     public GameObject[] Explorers;
     public float platformDampening = 5f;
     public float platformDampeningErruption = 3.5f;
+
     [Range(-10f, 10f)] public float platformOffset = 0f;
     public Transform Lava; // drag lava gameobject into inspector
-    public Transform erruptionViewPoint;
+    public Transform erruptionViewPoint; // point at which the platform will lerp to at end of game
     
 
-    private bool _erruptionHappening = false;
+    // private bool _erruptionHappening = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlatformState = States.ELEVATOR;
         Explorers = GameObject.FindGameObjectsWithTag("Explorer"); // find all explorers in the scene
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X)) PlatformState = States.ERRUPTION; // will swap this out for event call later
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) _erruptionHappening = true; // will swap this out for event call later
-
-        if (_erruptionHappening)
+        switch (PlatformState)
         {
-            transform.position = Vector3.Lerp(transform.position, erruptionViewPoint.position, Time.deltaTime / platformDampeningErruption);
-        }
-        else
-        {
-            float _averageYposition = Lava.position.y;
-            foreach (GameObject explorer in Explorers)
-            {
-                _averageYposition = _averageYposition + CheckExplorerPosition(explorer.transform.position.y); // checks to see if player is below lava line.. return lava position if this is true
-            }
+            case States.ELEVATOR:
+                float _averageYposition = Lava.position.y;
+                foreach (GameObject explorer in Explorers)
+                {
+                    _averageYposition = _averageYposition + CheckExplorerPosition(explorer.transform.position.y); // checks to see if player is below lava line.. return lava position if this is true
+                }
 
-            _averageYposition = (_averageYposition / (Explorers.Length + 1)) + platformOffset; // calculates final average y position
-            Debug.Log(_averageYposition);
+                _averageYposition = (_averageYposition / (Explorers.Length + 1)) + platformOffset; // calculates final average y position
+                // Debug.Log(_averageYposition);
 
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, _averageYposition, transform.position.z), Time.deltaTime / platformDampening); // smooth lerp to average position
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, Lava.position.y, 1000f), transform.position.z); // clamp position to not go under lava position
+                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, _averageYposition, transform.position.z), Time.deltaTime / platformDampening); // smooth lerp to average position
+                transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, Lava.position.y, 1000f), transform.position.z); // clamp position to not go under lava position
+                break;
+
+            case States.ERRUPTION:
+                transform.position = Vector3.Lerp(transform.position, erruptionViewPoint.position, Time.deltaTime / platformDampeningErruption);
+                break;
         }
 
     }
