@@ -1690,8 +1690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlatformState: 0
   Explorers: []
-  platformDampening: 5
-  platformDampeningErruption: 4
+  platformDampening: 7
+  platformDampeningErruption: 5
   platformOffset: 0
   Lava: {fileID: 628143465}
   erruptionViewPoint: {fileID: 1624701902}
