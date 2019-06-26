@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
-// using Sirenix.OdinInspector;
-// comment out the using.SirenX.Odin.. above if you don't have it
 
 public class AgentJumpToTarget : MonoBehaviour
 {   
@@ -29,16 +27,12 @@ public class AgentJumpToTarget : MonoBehaviour
     Vector3[] _jumpPath;
     bool previousRigidBodyState;
 
-    // remove the [Button] code if you don't have Odin
-   // [Button]
     public void GetStartPointAndMoveToPosition()
     {
         JumpStartPoint = GetJumpStartPoint();
         MoveToStartPoint();
     }
 
-    // remove the [Button] code if you don't have Odin
-   // [Button]
     public void PerformJump()
     {
         SpawnAgentAndGetPoint();

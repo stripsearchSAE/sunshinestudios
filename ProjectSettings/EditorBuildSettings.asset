@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/TestScenes/Roo/RooPlatformTest.unity
+    guid: 6a7aa84e1db58d044ba2d5368670cff1
   m_configObjects: {}
