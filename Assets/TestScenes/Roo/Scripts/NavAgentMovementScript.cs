@@ -41,7 +41,11 @@ public class NavAgentMovementScript : MonoBehaviour
 
                 }
                 else
-                    if (_isActive && hit.collider.tag != "Explorer") { _explorer.destination = hit.point; }
+                    if (_isActive && hit.collider.tag != "Explorer")
+                {
+                    _explorer.isStopped = false;
+                    _explorer.destination = hit.point;
+                }
                 
             }
         }
