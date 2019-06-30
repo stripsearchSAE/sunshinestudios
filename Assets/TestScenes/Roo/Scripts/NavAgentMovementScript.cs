@@ -5,9 +5,8 @@ using UnityEngine.AI;
 
 public class NavAgentMovementScript : MonoBehaviour
 {
-    private NavMeshAgent _explorer;
-
-    private bool _isActive = false;
+    private NavMeshAgent _explorer; 
+    private bool _isActive = false; // change by clicking on self. only active navagents will move
     private Renderer _rend;
 
     // Start is called before the first frame update
@@ -21,7 +20,7 @@ public class NavAgentMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
 
         RaycastHit hit;
 
@@ -29,9 +28,9 @@ public class NavAgentMovementScript : MonoBehaviour
         {
             if(Physics.Raycast(ray, out hit, 100f))
             {
-                if (hit.collider.gameObject == this.gameObject)
+                if (hit.collider.gameObject == this.gameObject) // check to see if ray hit self
                 {
-                    _isActive = !_isActive;
+                    _isActive = !_isActive; // swap to opposite bool value
                     if (_isActive) { _rend.material.color = Color.green; }
                     else
                     {
