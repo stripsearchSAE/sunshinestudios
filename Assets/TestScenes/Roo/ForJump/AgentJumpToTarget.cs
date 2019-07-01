@@ -6,9 +6,13 @@ using DG.Tweening;
 
 public class AgentJumpToTarget : MonoBehaviour
 {   
-    public NavMeshAgent NavMeshAgent;
+    private NavMeshAgent _explorer;
+    private bool _isActive = false; // change by clicking on self. only active navagents will move
+    public Renderer _rend;
+
     public Rigidbody Rigidbody;
-    public GameObject Target;
+    //public GameObject Target;
+    private Transform _target;
     public float ReachedStartPointDistance = 0.5f;
     public Transform DummyAgent;
     public Vector3 EndJumpPosition;
@@ -26,6 +30,16 @@ public class AgentJumpToTarget : MonoBehaviour
     float JumpDistance;
     Vector3[] _jumpPath;
     bool previousRigidBodyState;
+
+    private RaycastHit hit;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _explorer = GetComponent<NavMeshAgent>();
+        // _rend = GetComponent<Renderer>();
+        _rend.material.color = Color.black;
+    }
 
     public void GetStartPointAndMoveToPosition()
     {
@@ -47,7 +61,8 @@ public class AgentJumpToTarget : MonoBehaviour
     Vector3 GetJumpStartPoint()
     {
         NavMeshPath hostAgentPath = new NavMeshPath();
-        NavMeshAgent.CalculatePath(Target.transform.position, hostAgentPath);
+        //_explorer.CalculatePath(Target.transform.position, hostAgentPath);
+        _explorer.CalculatePath(hit.point, hostAgentPath);
         var endPointIndex = hostAgentPath.corners.Length - 1;
         return hostAgentPath.corners[endPointIndex];
 
@@ -58,19 +73,21 @@ public class AgentJumpToTarget : MonoBehaviour
     void MoveToStartPoint()
     {
         checkForStartPointReached = true;
-        NavMeshAgent.isStopped = false;
-        NavMeshAgent.SetDestination(JumpStartPoint);
+        _explorer.isStopped = false;
+        _explorer.SetDestination(JumpStartPoint);
     }
 
     void ReadyToJump()
     {
         //Do your pre_jump animation
+        PerformJump();
     }
 
     void SpawnAgentAndGetPoint()
     {
         // If using Pooling Spawn here instead
-        _dummyAgent = Instantiate(DummyAgent, Target.transform.position, Quaternion.identity);
+        //_dummyAgent = Instantiate(DummyAgent, Target.transform.position, Quaternion.identity);
+        _dummyAgent = Instantiate(DummyAgent, hit.point, Quaternion.identity);
         var info = _dummyAgent.GetComponent<ReturnNavmeshInfo>();
         EndJumpPosition = info.ReturnClosestPointBackToAgent(transform.position);
         JumpEndPoint = EndJumpPosition;
@@ -84,7 +101,7 @@ public class AgentJumpToTarget : MonoBehaviour
         Path.Add(JumpStartPoint);
 
         var tempMid = Vector3.Lerp(JumpStartPoint, JumpEndPoint, 0.5f);
-        tempMid.y = tempMid.y + NavMeshAgent.height + AddToJumpHeight;
+        tempMid.y = tempMid.y + _explorer.height + AddToJumpHeight;
 
         Path.Add(tempMid);
 
@@ -105,7 +122,7 @@ public class AgentJumpToTarget : MonoBehaviour
     void DoJump()
     {
         previousRigidBodyState = Rigidbody.isKinematic;
-        NavMeshAgent.enabled = false;
+        _explorer.enabled = false;
         Rigidbody.isKinematic = true;
 
         _jumpPath = Path.ToArray();
@@ -117,8 +134,9 @@ public class AgentJumpToTarget : MonoBehaviour
 
     void JumpFinished()
     {
-        NavMeshAgent.enabled = true;
+        _explorer.enabled = true;
         Rigidbody.isKinematic = previousRigidBodyState;
+        _explorer.destination = hit.point;
 
         // If using Pooling DeSpawn here instead
         Destroy(_dummyAgent.gameObject);
@@ -127,14 +145,48 @@ public class AgentJumpToTarget : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
-        {
-            GetStartPointAndMoveToPosition();
-        }
+         {
+             GetStartPointAndMoveToPosition();
+         }
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            PerformJump();
-        }
+         if (Input.GetKeyDown(KeyCode.J))
+         {
+             PerformJump();
+         }
+         
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
+
+            //RaycastHit hit;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (Physics.Raycast(ray, out hit, 100f))
+                {
+                    if (hit.collider.gameObject == this.gameObject) // check to see if ray hit self
+                    {
+                        _isActive = !_isActive; // swap to opposite bool value
+                        if (_isActive) { _rend.material.color = Color.green; }
+                        else
+                        {
+                            _rend.material.color = Color.black;
+                            _explorer.isStopped = true;
+                        }
+
+
+                    }
+                    else
+                        if (_isActive && hit.collider.tag != "Explorer")
+                    {
+                        _explorer.isStopped = false;
+                        //_explorer.destination = hit.point;
+                        // Target.transform.position = hit.point;
+                        GetStartPointAndMoveToPosition();
+                    }
+
+                }
+            }
+        
 
         if (checkForStartPointReached)
         {
@@ -144,9 +196,9 @@ public class AgentJumpToTarget : MonoBehaviour
             {
                 ReadyToJump();
 
-                if(NavMeshAgent.isOnNavMesh)
+                if(_explorer.isOnNavMesh)
                 {
-                    NavMeshAgent.isStopped = true;
+                    _explorer.isStopped = true;
                 }
                
                 checkForStartPointReached = false;               
