@@ -30,8 +30,11 @@ public class AgentJumpToTarget : MonoBehaviour
     float JumpDistance;
     Vector3[] _jumpPath;
     bool previousRigidBodyState;
+    private bool _isTravelling = false;
 
     private RaycastHit hit;
+
+    public float explorerStoppingDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,8 @@ public class AgentJumpToTarget : MonoBehaviour
         _explorer = GetComponent<NavMeshAgent>();
         // _rend = GetComponent<Renderer>();
         _rend.material.color = Color.black;
+        _explorer.stoppingDistance = explorerStoppingDistance;
+
     }
 
     public void GetStartPointAndMoveToPosition()
@@ -66,19 +71,29 @@ public class AgentJumpToTarget : MonoBehaviour
         var endPointIndex = hostAgentPath.corners.Length - 1;
         return hostAgentPath.corners[endPointIndex];
 
-        //Improvement to make- get the jump distance using the start and end point
+        // Improvement to make- get the jump distance using the start and end point
         // use that to set the Jump Time
     }
 
     void MoveToStartPoint()
     {
-        checkForStartPointReached = true;
-        _explorer.isStopped = false;
-        _explorer.SetDestination(JumpStartPoint);
+
+            checkForStartPointReached = true;
+            _explorer.isStopped = false;
+            _explorer.SetDestination(JumpStartPoint);
+        
     }
 
     void ReadyToJump()
     {
+        float distance = Vector3.Distance(transform.position, hit.point);
+
+        if (distance < 1.1f)
+        {
+            _explorer.isStopped = true;
+            _isTravelling = false;
+            return;
+        }
         //Do your pre_jump animation
         PerformJump();
     }
@@ -108,6 +123,7 @@ public class AgentJumpToTarget : MonoBehaviour
         Path.Add(JumpEndPoint);
 
         JumpDistance = Vector3.Distance(JumpStartPoint, JumpEndPoint);
+        Debug.Log(JumpDistance);
 
         if (JumpDistance <= MaxJumpableDistance)
         {
@@ -116,6 +132,7 @@ public class AgentJumpToTarget : MonoBehaviour
         else
         {
             Debug.Log("Too far to jump");
+            // can put a denial animation here
         }
     }
 
@@ -127,8 +144,6 @@ public class AgentJumpToTarget : MonoBehaviour
 
         _jumpPath = Path.ToArray();
 
-        // if you don't want to use a RigidBody change this to
-        //transform.DoLocalPath per the DoTween doc's
         Rigidbody.DOLocalPath(_jumpPath, JumpTime, PathType.CatmullRom).OnComplete(JumpFinished);
     }
 
@@ -144,7 +159,8 @@ public class AgentJumpToTarget : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        /*
+         * if (Input.GetKeyDown(KeyCode.H))
          {
              GetStartPointAndMoveToPosition();
          }
@@ -153,9 +169,22 @@ public class AgentJumpToTarget : MonoBehaviour
          {
              PerformJump();
          }
-         
+         */
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
+
+       /* if (_isTravelling)
+        {
+            float distance = Vector3.Distance(transform.position, hit.point);
+            
+            if (distance < .1f)
+            {
+                _explorer.isStopped = true;
+                _isTravelling = false;
+            }
+        } */
+       
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
 
             //RaycastHit hit;
 
@@ -171,16 +200,21 @@ public class AgentJumpToTarget : MonoBehaviour
                         {
                             _rend.material.color = Color.black;
                             _explorer.isStopped = true;
-                        }
+                            _isTravelling = false;
+                    }
 
 
                     }
                     else
                         if (_isActive && hit.collider.tag != "Explorer")
                     {
-                        _explorer.isStopped = false;
-                        //_explorer.destination = hit.point;
-                        // Target.transform.position = hit.point;
+                    _isTravelling = true;
+                    _explorer.isStopped = false;
+                    checkForStartPointReached = false;
+                    previousRigidBodyState = false;
+                    _dummyAgent = null;
+                    Path.Clear();
+                       
                         GetStartPointAndMoveToPosition();
                     }
 
