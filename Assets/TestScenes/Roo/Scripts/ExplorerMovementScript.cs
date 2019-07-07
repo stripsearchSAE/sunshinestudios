@@ -13,8 +13,7 @@ public class ExplorerMovementScript : MonoBehaviour
     private bool _isActive = false; // change by clicking on self. only active navagents will move
     public Renderer _rend;
 
-    public Rigidbody Rigidbody;
-    //public GameObject Target;
+    private Rigidbody Rigidbody; // ridgid body of explorer
     private Transform _target;
     public float ReachedStartPointDistance = 0.5f;
     public Transform DummyAgent;
@@ -34,20 +33,19 @@ public class ExplorerMovementScript : MonoBehaviour
     Vector3[] _jumpPath;
     bool previousRigidBodyState;
     private bool _isTravelling = false;
-    private Vector3 _hit;
-
-    // private RaycastHit hit;
+    private bool _isEnabled = true; // set this to false to stop player clicking on explorer to active ie. during an animation.
+    private Vector3 _hit; // fill this with oculus pointer hit
 
     public float explorerStoppingDistance;
 
     // Start is called before the first frame update
     void Start()
     {
-        ExplorerStates = states.IDLE;
+        Rigidbody = GetComponent<Rigidbody>();
         _explorer = GetComponent<NavMeshAgent>();
         _rend.material.color = Color.black;
         _explorer.stoppingDistance = explorerStoppingDistance;
-
+        ExplorerStates = states.IDLE;
     }
 
     private void Update()
@@ -60,17 +58,24 @@ public class ExplorerMovementScript : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
 
                 RaycastHit hit;
+                NavMeshHit navHit;
+
+                bool hitSomething = Physics.Raycast(ray, out hit, 100f);
+                if (!hitSomething) return;
+
+                bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas);
+                Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green);
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (Physics.Raycast(ray, out hit, 100f))
+                    if (hitSomething && _isEnabled)
                     {
                         if (hit.collider.gameObject == this.gameObject) // check to see if ray hit self
                         {
                             _isActive = !_isActive; // swap to opposite bool value
+                            return;
                         }
-                        else
-                            if (_isActive && hit.collider.tag != "Explorer")
+                        else if (_isActive && hit.collider.tag == "Walkable") // only proceeds if active an directed to a walkable surface
                         {
                             _isTravelling = true;
                             _explorer.isStopped = false;
@@ -81,9 +86,13 @@ public class ExplorerMovementScript : MonoBehaviour
 
                             Path.Clear();
 
-                            
-
                             ExplorerStates = states.MOVING;
+                            return;
+                        }
+                        else if(_isActive && hit.collider.tag != "Explorer")
+                        {
+                            StartCoroutine(Denial());
+                            return;
                         }
 
                     }
@@ -245,6 +254,16 @@ public class ExplorerMovementScript : MonoBehaviour
 
         // Improvement to make- get the jump distance using the start and end point
         // use that to set the Jump Time
+    }
+
+    IEnumerator Denial()
+    {
+        _isEnabled = false;
+        _isActive = false;
+        // put denial sound and animation here
+        yield return new WaitForSeconds(1f);
+        _isEnabled = true;
+        ExplorerStates = states.IDLE;
     }
 
 }

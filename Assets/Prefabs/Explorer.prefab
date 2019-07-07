@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5422009c3f68a74abd007ebed9db8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplorerStates: 0
   _rend: {fileID: 3969078547179544600}
-  Rigidbody: {fileID: 3999325757221486302}
   ReachedStartPointDistance: 0.5
   DummyAgent: {fileID: 4088997838483852, guid: 44be76bf460da0e4396deecdf0eaa035, type: 3}
   EndJumpPosition: {x: 0, y: 0, z: 0}
