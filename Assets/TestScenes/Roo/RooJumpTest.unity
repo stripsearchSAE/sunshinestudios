@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45111698, g: 0.49970353, b: 0.56747204, a: 1}
+  m_IndirectSpecularColor: {r: 0.45111752, g: 0.4997043, b: 0.56747293, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,7 +132,7 @@ PrefabInstance:
     - target: {fileID: 3985415657353429276, guid: d9b402e3f7c8943458361d99ed718e23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.81
+      value: -4.05
       objectReference: {fileID: 0}
     - target: {fileID: 3985415657353429276, guid: d9b402e3f7c8943458361d99ed718e23,
         type: 3}
@@ -198,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EndJumpPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103513073958272615, guid: d9b402e3f7c8943458361d99ed718e23,
+        type: 3}
+      propertyPath: MaxJumpableDistance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b402e3f7c8943458361d99ed718e23, type: 3}
@@ -312,7 +317,7 @@ PrefabInstance:
     - target: {fileID: 3985415657353429276, guid: d9b402e3f7c8943458361d99ed718e23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.81
+      value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: 3985415657353429276, guid: d9b402e3f7c8943458361d99ed718e23,
         type: 3}
@@ -378,6 +383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EndJumpPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103513073958272615, guid: d9b402e3f7c8943458361d99ed718e23,
+        type: 3}
+      propertyPath: MaxJumpableDistance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b402e3f7c8943458361d99ed718e23, type: 3}
@@ -914,7 +924,7 @@ PrefabInstance:
     - target: {fileID: 3985415657353429276, guid: d9b402e3f7c8943458361d99ed718e23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.81
+      value: -4.04
       objectReference: {fileID: 0}
     - target: {fileID: 3985415657353429276, guid: d9b402e3f7c8943458361d99ed718e23,
         type: 3}
@@ -980,6 +990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EndJumpPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103513073958272615, guid: d9b402e3f7c8943458361d99ed718e23,
+        type: 3}
+      propertyPath: MaxJumpableDistance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b402e3f7c8943458361d99ed718e23, type: 3}

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3887745170550847608}
   - component: {fileID: 3999325757221486302}
   - component: {fileID: 3937418782707188970}
-  - component: {fileID: 3950954657589217748}
+  - component: {fileID: 6103513073958272615}
   m_Layer: 0
   m_Name: Explorer
   m_TagString: Explorer
@@ -164,7 +164,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3950954657589217748
+--- !u!114 &6103513073958272615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3983211850279058646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee84e5f15ebd4b48a8d937d02d16272, type: 3}
+  m_Script: {fileID: 11500000, guid: f5422009c3f68a74abd007ebed9db8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rend: {fileID: 3969078547179544600}
@@ -183,6 +183,6 @@ MonoBehaviour:
   EndJumpPosition: {x: 0, y: 0, z: 0}
   MaxJumpableDistance: 10
   JumpTime: 0.8
-  AddToJumpHeight: 0.8
+  AddToJumpHeight: 0.5
   JumpStartPoint: {x: 0, y: 0, z: 0}
-  explorerStoppingDistance: 1
+  explorerStoppingDistance: 0
