@@ -187,6 +187,11 @@ public class ExplorerMovementScript : MonoBehaviour
             else
             {
                 Debug.Log("Too far to jump");
+
+                _explorer.isStopped = true;
+                _isTravelling = false;
+                _isActive = false;
+                ExplorerStates = states.IDLE;
                 // can put a denial animation here
             }
         }
