@@ -38,6 +38,8 @@ public class ExplorerMovementScript : MonoBehaviour
 
     public float explorerStoppingDistance;
 
+    public float explorerTimeOut = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -107,7 +109,7 @@ public class ExplorerMovementScript : MonoBehaviour
                 {
                     float distance = Vector3.Distance(transform.position, _hit);
 
-                    if (distance < 1f)
+                    if (distance < 1f) // add timeout for explorers later
                     {
                         _explorer.isStopped = true;
                         _isTravelling = false;
