@@ -13,7 +13,7 @@ public class ExplorerMovementScript : MonoBehaviour
     private bool _isActive = false; // change by clicking on self. only active navagents will move
     public Renderer _rend;
 
-    private Rigidbody Rigidbody; // ridgid body of explorer
+    public Rigidbody Rigidbody; // ridgid body of explorer
     private Transform _target;
     public float ReachedStartPointDistance = 0.5f;
     public Transform DummyAgent;
@@ -121,103 +121,6 @@ public class ExplorerMovementScript : MonoBehaviour
                 break;
         }
 
-        void GetStartPointAndMoveToPosition()
-        {
-            JumpStartPoint = GetJumpStartPoint();
-            MoveToStartPoint();
-        }
-
-        void PerformJump()
-        {
-            SpawnAgentAndGetPoint();
-        }
-
-        void MoveToStartPoint()
-        {
-
-            checkForStartPointReached = true;
-            _explorer.isStopped = false;
-            _explorer.SetDestination(JumpStartPoint);
-
-        }
-
-        void ReadyToJump()
-        {
-            float distance = Vector3.Distance(transform.position, _hit);
-
-            if (distance < 1.1f)
-            {
-                _explorer.isStopped = true;
-                _isTravelling = false;
-                return;
-            }
-            //Do your pre_jump animation
-            PerformJump();
-        }
-
-        void SpawnAgentAndGetPoint()
-        {
-            // If using Pooling Spawn here instead
-            //_dummyAgent = Instantiate(DummyAgent, Target.transform.position, Quaternion.identity);
-            _dummyAgent = Instantiate(DummyAgent, _hit, Quaternion.identity);
-            var info = _dummyAgent.GetComponent<ReturnNavmeshInfo>();
-            EndJumpPosition = info.ReturnClosestPointBackToAgent(transform.position);
-            JumpEndPoint = EndJumpPosition;
-
-            MakeJumpPath();
-
-        }
-
-        void MakeJumpPath()
-        {
-            Path.Add(JumpStartPoint);
-
-            var tempMid = Vector3.Lerp(JumpStartPoint, JumpEndPoint, 0.5f);
-            tempMid.y = tempMid.y + _explorer.height + AddToJumpHeight;
-
-            Path.Add(tempMid);
-
-            Path.Add(JumpEndPoint);
-
-            JumpDistance = Vector3.Distance(JumpStartPoint, JumpEndPoint);
-            Debug.Log(JumpDistance);
-
-            if (JumpDistance <= MaxJumpableDistance)
-            {
-                DoJump();
-            }
-            else
-            {
-                Debug.Log("Too far to jump");
-
-                _explorer.isStopped = true;
-                _isTravelling = false;
-                _isActive = false;
-                ExplorerStates = states.IDLE;
-                // can put a denial animation here
-            }
-        }
-
-        void DoJump()
-        {
-            previousRigidBodyState = Rigidbody.isKinematic;
-            _explorer.enabled = false;
-            Rigidbody.isKinematic = true;
-
-            _jumpPath = Path.ToArray();
-
-            Rigidbody.DOLocalPath(_jumpPath, JumpTime, PathType.CatmullRom).OnComplete(JumpFinished);
-        }
-
-        void JumpFinished()
-        {
-            _explorer.enabled = true;
-            Rigidbody.isKinematic = previousRigidBodyState;
-            _explorer.destination = _hit;
-
-            // If using Pooling DeSpawn here instead
-            Destroy(_dummyAgent.gameObject);
-        }
 
         if (checkForStartPointReached)
         {
@@ -243,9 +146,108 @@ public class ExplorerMovementScript : MonoBehaviour
             _explorer.isStopped = true;
             _isTravelling = false;
         }
+
     }
 
-    public void OnEnable()
+    public void GetStartPointAndMoveToPosition()
+    {
+        JumpStartPoint = GetJumpStartPoint();
+        MoveToStartPoint();
+    }
+
+    public void PerformJump()
+    {
+        SpawnAgentAndGetPoint();
+    }
+
+    void MoveToStartPoint()
+    {
+
+        checkForStartPointReached = true;
+        _explorer.isStopped = false;
+        _explorer.SetDestination(JumpStartPoint);
+
+    }
+
+    void ReadyToJump()
+    {
+        float distance = Vector3.Distance(transform.position, _hit);
+
+        if (distance < 1.1f)
+        {
+            _explorer.isStopped = true;
+            _isTravelling = false;
+            return;
+        }
+        //Do your pre_jump animation
+        PerformJump();
+    }
+
+    void SpawnAgentAndGetPoint()
+    {
+        // If using Pooling Spawn here instead
+        //_dummyAgent = Instantiate(DummyAgent, Target.transform.position, Quaternion.identity);
+        _dummyAgent = Instantiate(DummyAgent, _hit, Quaternion.identity);
+        var info = _dummyAgent.GetComponent<ReturnNavmeshInfo>();
+        EndJumpPosition = info.ReturnClosestPointBackToAgent(transform.position);
+        JumpEndPoint = EndJumpPosition;
+
+        MakeJumpPath();
+
+    }
+
+    void MakeJumpPath()
+    {
+        Path.Add(JumpStartPoint);
+
+        var tempMid = Vector3.Lerp(JumpStartPoint, JumpEndPoint, 0.5f);
+        tempMid.y = tempMid.y + _explorer.height + AddToJumpHeight;
+
+        Path.Add(tempMid);
+
+        Path.Add(JumpEndPoint);
+
+        JumpDistance = Vector3.Distance(JumpStartPoint, JumpEndPoint);
+        Debug.Log(JumpDistance);
+
+        if (JumpDistance <= MaxJumpableDistance)
+        {
+            DoJump();
+        }
+        else
+        {
+            Debug.Log("Too far to jump");
+
+            _explorer.isStopped = true;
+            _isTravelling = false;
+            _isActive = false;
+            ExplorerStates = states.IDLE;
+            // can put a denial animation here
+        }
+    }
+
+    void DoJump()
+    {
+        previousRigidBodyState = Rigidbody.isKinematic;
+        _explorer.enabled = false;
+        Rigidbody.isKinematic = true;
+
+        _jumpPath = Path.ToArray();
+
+        Rigidbody.DOLocalPath(_jumpPath, JumpTime, PathType.CatmullRom).OnComplete(JumpFinished);
+    }
+
+    void JumpFinished()
+    {
+        _explorer.enabled = true;
+        Rigidbody.isKinematic = previousRigidBodyState;
+        _explorer.destination = _hit;
+
+        // If using Pooling DeSpawn here instead
+        Destroy(_dummyAgent.gameObject);
+    }
+
+    private void OnEnable()
     {
         checkForStartPointReached = false;
         _transform = transform;
