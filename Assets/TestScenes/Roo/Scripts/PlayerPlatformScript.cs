@@ -25,7 +25,7 @@ public class PlayerPlatformScript : MonoBehaviour
     public GameObject[] Explorers;
     public float platformDampening = 5f;
     public float platformDampeningErruption = 3.5f;
-
+    public bool calcLavaPosition = true;
     [Range(-10f, 10f)] public float platformOffset = 0f;
     public Transform Lava; // drag lava gameobject into inspector
     public Transform erruptionViewPoint; // point at which the platform will lerp to at end of game
@@ -52,13 +52,19 @@ public class PlayerPlatformScript : MonoBehaviour
         switch (PlatformState)
         {
             case States.ELEVATOR:
-                float _averageYposition = Lava.position.y;
+                float _averageYposition = 0f;
+                int _divider = Explorers.Length;
+                if (calcLavaPosition)
+                {
+                    _averageYposition = Lava.position.y;
+                    _divider += 1;
+                }
                 foreach (GameObject explorer in Explorers)
                 {
                     _averageYposition = _averageYposition + CheckExplorerPosition(explorer.transform.position.y); // checks to see if player is below lava line.. return lava position if this is true
                 }
 
-                _averageYposition = (_averageYposition / (Explorers.Length + 1)) + platformOffset; // calculates final average y position
+                _averageYposition = (_averageYposition / _divider) + platformOffset; // calculates final average y position
                 // Debug.Log(_averageYposition);
 
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, _averageYposition, transform.position.z), Time.deltaTime / platformDampening); // smooth lerp to average position
