@@ -40,6 +40,9 @@ public class ExplorerMovementScript : MonoBehaviour
 
     public float explorerTimeOut = 5;
 
+    [Header("Off-Mesh Link traversal")]
+    public bool OffMeshLinkMethod = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -131,11 +134,14 @@ public class ExplorerMovementScript : MonoBehaviour
 
             if (distance <= ReachedStartPointDistance * ReachedStartPointDistance)
             {
-                ReadyToJump();
-
-                if (_explorer.isOnNavMesh)
+                if (!OffMeshLinkMethod)
                 {
-                    _explorer.isStopped = true;
+                    ReadyToJump();
+
+                    if (_explorer.isOnNavMesh)
+                    {
+                        _explorer.isStopped = true;
+                    }
                 }
 
                 checkForStartPointReached = false;
