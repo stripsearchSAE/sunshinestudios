@@ -10,7 +10,8 @@ public class LavaScript : MonoBehaviour
     public float dampening;
     public float lavaOffset = 1f;
     public bool lavaAlwaysRises;
-    // private float[] distance;
+
+    private Vector3 velocity = Vector3.zero; // reference for smoothdamp
 
     // Start is called before the first frame update
     void Start()
@@ -26,18 +27,14 @@ public class LavaScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        // needs to be max distance so can find values that are less
+        Vector3 _prevPosition;
         float minDistance = float.MaxValue;
         GameObject closestExplorer = Explorers[0];
-        // int closestCharacter = 0;
 
         foreach (GameObject explorer in Explorers)
         {
             // get this distance
             float thisDistance = Mathf.Abs(explorer.transform.position.y - transform.position.y);
-
-            // save distance
-            // distance[x] = thisDistance;
 
             // compare and update minimum distance & closest character if required
             if (thisDistance < minDistance)
@@ -48,13 +45,15 @@ public class LavaScript : MonoBehaviour
         }
 
         // Debug.Log(minDistance);
-        if (minDistance < lavaOffset)
+        if (minDistance <= lavaOffset + 0.5f)
         {
             if (!lavaAlwaysRises) return;
             transform.Translate(Vector3.up * Time.deltaTime / dampening, Space.World);
             return;
         }
-        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, closestExplorer.transform.position.y, transform.position.z), Time.deltaTime / dampening);
+
+        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(transform.position.x, closestExplorer.transform.position.y - lavaOffset, transform.position.z), ref velocity, dampening);
+       
     }
 
 }

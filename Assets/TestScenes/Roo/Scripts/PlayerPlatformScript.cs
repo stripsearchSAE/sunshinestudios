@@ -29,7 +29,8 @@ public class PlayerPlatformScript : MonoBehaviour
     [Range(-10f, 10f)] public float platformOffset = 0f;
     public Transform Lava; // drag lava gameobject into inspector
     public Transform erruptionViewPoint; // point at which the platform will lerp to at end of game
-    
+
+    private Vector3 velocity = Vector3.zero; // refernce for smoothdamp
 
     // private bool _erruptionHappening = false;
 
@@ -67,12 +68,12 @@ public class PlayerPlatformScript : MonoBehaviour
                 _averageYposition = (_averageYposition / _divider) + platformOffset; // calculates final average y position
                 // Debug.Log(_averageYposition);
 
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, _averageYposition, transform.position.z), Time.deltaTime / platformDampening); // smooth lerp to average position
+                transform.position = Vector3.SmoothDamp(transform.position, new Vector3(transform.position.x, _averageYposition, transform.position.z), ref velocity, platformDampening);
                 transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, Lava.position.y, 1000f), transform.position.z); // clamp position to not go under lava position
                 break;
 
             case States.ERRUPTION:
-                transform.position = Vector3.Lerp(transform.position, erruptionViewPoint.position, Time.deltaTime / platformDampeningErruption);
+                transform.position = Vector3.SmoothDamp(transform.position, erruptionViewPoint.transform.position, ref velocity, platformDampeningErruption);
                 break;
         }
 
