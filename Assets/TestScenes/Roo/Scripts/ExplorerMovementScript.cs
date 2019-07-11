@@ -84,7 +84,10 @@ public class ExplorerMovementScript : MonoBehaviour
                             checkForStartPointReached = false;
                             previousRigidBodyState = false;
                             _dummyAgent = null;
-                            _hit = hit.point;
+
+                            NavMeshHit tempHit;
+                            NavMesh.SamplePosition(hit.point, out tempHit, 2.0f, NavMesh.AllAreas);
+                            _hit = tempHit.position;
 
                             Path.Clear();
 
