@@ -9,8 +9,8 @@ public class ExplorerMovementScript : MonoBehaviour
     public enum states { IDLE, MOVING};
     public states ExplorerStates;
 
-    private NavMeshAgent _explorer;
-    private bool _isActive = false; // change by clicking on self. only active navagents will move
+    public NavMeshAgent explorer;
+    public bool isActive = false; // change by clicking on self. only active navagents will move
     public Renderer _rend;
 
     public Rigidbody Rigidbody; // ridgid body of explorer
@@ -32,7 +32,7 @@ public class ExplorerMovementScript : MonoBehaviour
     float JumpDistance;
     Vector3[] _jumpPath;
     bool previousRigidBodyState;
-    private bool _isTravelling = false;
+    public bool isTravelling = false;
     private bool _isEnabled = true; // set this to false to stop player clicking on explorer to active ie. during an animation.
     private Vector3 _hit; // fill this with oculus pointer hit
     private bool _useMouse = false;
@@ -49,9 +49,9 @@ public class ExplorerMovementScript : MonoBehaviour
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody>();
-        _explorer = GetComponent<NavMeshAgent>();
+        explorer = GetComponent<NavMeshAgent>();
         _rend.material.color = Color.black;
-        _explorer.stoppingDistance = explorerStoppingDistance;
+        explorer.stoppingDistance = explorerStoppingDistance;
         ExplorerStates = states.IDLE;
     }
 
@@ -88,13 +88,13 @@ public class ExplorerMovementScript : MonoBehaviour
                     {
                         if (hit.collider.gameObject == this.gameObject) // check to see if ray hit self
                         {
-                            _isActive = !_isActive; // swap to opposite bool value
+                            isActive = !isActive; // swap to opposite bool value
                             return;
                         }
-                        else if (_isActive && hit.collider.tag == "Walkable") // only proceeds if active an directed to a walkable surface
+                        else if (isActive && hit.collider.tag == "Walkable") // only proceeds if active an directed to a walkable surface
                         {
-                            _isTravelling = true;
-                            _explorer.isStopped = false;
+                            isTravelling = true;
+                            explorer.isStopped = false;
                             checkForStartPointReached = false;
                             previousRigidBodyState = false;
                             _dummyAgent = null;
@@ -108,7 +108,7 @@ public class ExplorerMovementScript : MonoBehaviour
                             ExplorerStates = states.MOVING;
                             return;
                         }
-                        else if(_isActive && hit.collider.tag != "Explorer")
+                        else if(isActive && hit.collider.tag != "Explorer")
                         {
                             StartCoroutine(Denial());
                             return;
@@ -122,15 +122,15 @@ public class ExplorerMovementScript : MonoBehaviour
             case states.MOVING:
                 GetStartPointAndMoveToPosition();
 
-                if (_isTravelling)
+                if (isTravelling)
                 {
                     float distance = Vector3.Distance(transform.position, _hit);
 
                     if (distance < 1f) // add timeout for explorers later
                     {
-                        _explorer.isStopped = true;
-                        _isTravelling = false;
-                        _isActive = false;
+                        explorer.isStopped = true;
+                        isTravelling = false;
+                        isActive = false;
                         ExplorerStates = states.IDLE;
                     }
                 }
@@ -149,9 +149,9 @@ public class ExplorerMovementScript : MonoBehaviour
                 {
                     ReadyToJump();
 
-                    if (_explorer.isOnNavMesh)
+                    if (explorer.isOnNavMesh)
                     {
-                        _explorer.isStopped = true;
+                        explorer.isStopped = true;
                     }
                 }
 
@@ -159,12 +159,12 @@ public class ExplorerMovementScript : MonoBehaviour
             }
         }
 
-        if (_isActive) { _rend.material.color = Color.green; }
+        if (isActive) { _rend.material.color = Color.green; }
         else
         {
             _rend.material.color = Color.black;
-            _explorer.isStopped = true;
-            _isTravelling = false;
+            explorer.isStopped = true;
+            isTravelling = false;
         }
 
     }
@@ -184,8 +184,8 @@ public class ExplorerMovementScript : MonoBehaviour
     {
 
         checkForStartPointReached = true;
-        _explorer.isStopped = false;
-        _explorer.SetDestination(JumpStartPoint);
+        explorer.isStopped = false;
+        explorer.SetDestination(JumpStartPoint);
 
     }
 
@@ -195,8 +195,8 @@ public class ExplorerMovementScript : MonoBehaviour
 
         if (distance < 1.1f)
         {
-            _explorer.isStopped = true;
-            _isTravelling = false;
+            explorer.isStopped = true;
+            isTravelling = false;
             return;
         }
         //Do your pre_jump animation
@@ -221,7 +221,7 @@ public class ExplorerMovementScript : MonoBehaviour
         Path.Add(JumpStartPoint);
 
         var tempMid = Vector3.Lerp(JumpStartPoint, JumpEndPoint, 0.5f);
-        tempMid.y = tempMid.y + _explorer.height + AddToJumpHeight;
+        tempMid.y = tempMid.y + explorer.height + AddToJumpHeight;
 
         Path.Add(tempMid);
 
@@ -238,9 +238,9 @@ public class ExplorerMovementScript : MonoBehaviour
         {
             Debug.Log("Too far to jump");
 
-            _explorer.isStopped = true;
-            _isTravelling = false;
-            _isActive = false;
+            explorer.isStopped = true;
+            isTravelling = false;
+            isActive = false;
             ExplorerStates = states.IDLE;
             // can put a denial animation here
         }
@@ -249,7 +249,7 @@ public class ExplorerMovementScript : MonoBehaviour
     void DoJump()
     {
         previousRigidBodyState = Rigidbody.isKinematic;
-        _explorer.enabled = false;
+        explorer.enabled = false;
         Rigidbody.isKinematic = true;
 
         _jumpPath = Path.ToArray();
@@ -259,9 +259,9 @@ public class ExplorerMovementScript : MonoBehaviour
 
     void JumpFinished()
     {
-        _explorer.enabled = true;
+        explorer.enabled = true;
         Rigidbody.isKinematic = previousRigidBodyState;
-        _explorer.destination = _hit;
+        explorer.destination = _hit;
 
         // If using Pooling DeSpawn here instead
         Destroy(_dummyAgent.gameObject);
@@ -277,7 +277,7 @@ public class ExplorerMovementScript : MonoBehaviour
     {
         NavMeshPath hostAgentPath = new NavMeshPath();
        
-        _explorer.CalculatePath(_hit, hostAgentPath);
+        explorer.CalculatePath(_hit, hostAgentPath);
         var endPointIndex = hostAgentPath.corners.Length - 1;
         return hostAgentPath.corners[endPointIndex];
 
@@ -288,7 +288,7 @@ public class ExplorerMovementScript : MonoBehaviour
     IEnumerator Denial()
     {
         _isEnabled = false;
-        _isActive = false;
+        isActive = false;
         // put denial sound and animation here
         yield return new WaitForSeconds(1f);
         _isEnabled = true;
