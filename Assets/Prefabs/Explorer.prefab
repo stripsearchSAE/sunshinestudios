@@ -188,3 +188,5 @@ MonoBehaviour:
   JumpStartPoint: {x: 0, y: 0, z: 0}
   explorerStoppingDistance: 0
   explorerTimeOut: 5
+  OffMeshLinkMethod: 0
+  GoController: {fileID: 0}

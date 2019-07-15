@@ -35,10 +35,12 @@ public class ExplorerMovementScript : MonoBehaviour
     private bool _isTravelling = false;
     private bool _isEnabled = true; // set this to false to stop player clicking on explorer to active ie. during an animation.
     private Vector3 _hit; // fill this with oculus pointer hit
+    private bool _useMouse = false;
 
     public float explorerStoppingDistance;
 
     public float explorerTimeOut = 5;
+    public GameObject GoController;
 
     [Header("Off-Mesh Link traversal")]
     public bool OffMeshLinkMethod = false;
@@ -55,23 +57,32 @@ public class ExplorerMovementScript : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyUp(KeyCode.M)) _useMouse = !_useMouse;
         switch (ExplorerStates)
         {
 
             case states.IDLE:
 
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
-
                 RaycastHit hit;
                 NavMeshHit navHit;
+                bool controllerCheck = OVRInput.IsControllerConnected(OVRInput.Controller.RTrackedRemote) || OVRInput.IsControllerConnected(OVRInput.Controller.LTrackedRemote);
+                bool hitSomething = false;
+                if (controllerCheck)
+                {
+                    hitSomething = Physics.Raycast(GoController.transform.position, GoController.transform.forward, out hit, 100f);
+                }
+                else
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
+                    hitSomething = hitSomething = Physics.Raycast(ray, out hit, 100f);
+                }
 
-                bool hitSomething = Physics.Raycast(ray, out hit, 100f);
                 if (!hitSomething) return;
 
                 bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas);
                 Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green);
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) || OVRInput.GetDown(OVRInput.Button.One))
                 {
                     if (hitSomething && _isEnabled)
                     {
