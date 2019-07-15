@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Explorer
   - Walkable
+  - Rock
   layers:
   - Default
   - TransparentFX
