@@ -69,12 +69,12 @@ public class ExplorerMovementScript : MonoBehaviour
                 bool hitSomething = false;
                 if (controllerCheck)
                 {
-                    hitSomething = Physics.Raycast(GoController.transform.position, GoController.transform.forward, out hit, 100f);
+                    hitSomething = Physics.Raycast(GoController.transform.position, GoController.transform.forward, out hit);
                 }
                 else
                 {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position
-                    hitSomething = hitSomething = Physics.Raycast(ray, out hit, 100f);
+                    hitSomething = Physics.Raycast(ray, out hit, 100f);
                 }
 
                 if (!hitSomething) return;
@@ -82,7 +82,7 @@ public class ExplorerMovementScript : MonoBehaviour
                 bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas);
                 Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green);
 
-                if (Input.GetMouseButtonDown(0) || OVRInput.GetDown(OVRInput.Button.One))
+                if (Input.GetMouseButtonDown(0) || OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
                 {
                     if (hitSomething && _isEnabled)
                     {
