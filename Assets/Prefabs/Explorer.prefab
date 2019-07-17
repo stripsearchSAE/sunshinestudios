@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3999325757221486302}
   - component: {fileID: 3937418782707188970}
   - component: {fileID: 6103513073958272615}
+  - component: {fileID: 6546780477206537265}
   m_Layer: 0
   m_Name: Explorer
   m_TagString: Explorer
@@ -176,17 +177,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5422009c3f68a74abd007ebed9db8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplorerStates: 0
-  _rend: {fileID: 3969078547179544600}
-  Rigidbody: {fileID: 3999325757221486302}
-  ReachedStartPointDistance: 0.5
-  DummyAgent: {fileID: 4088997838483852, guid: 44be76bf460da0e4396deecdf0eaa035, type: 3}
-  EndJumpPosition: {x: 0, y: 0, z: 0}
-  MaxJumpableDistance: 10
-  JumpTime: 0.8
-  AddToJumpHeight: 0.5
-  JumpStartPoint: {x: 0, y: 0, z: 0}
-  explorerStoppingDistance: 0
+  isActive: 0
+  isTravelling: 0
   explorerTimeOut: 5
-  OffMeshLinkMethod: 0
-  GoController: {fileID: 0}
+  _rend: {fileID: 3969078547179544600}
+  ReachedStartPointDistance: 0.5
+  AddToJumpHeight: 0.5
+  explorer: {fileID: 0}
+  explorerStoppingDistance: 0
+--- !u!114 &6546780477206537265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983211850279058646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511fe5056171e7540beab74c23f5e381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 2
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
