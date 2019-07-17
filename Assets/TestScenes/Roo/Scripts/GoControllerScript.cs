@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class GoControllerScript : BaseController
 {
-    public GameObject GoController; 
     LineRenderer _line;
     // Start is called before the first frame update
     void Start()
@@ -24,22 +23,22 @@ public class GoControllerScript : BaseController
             return;
         }
         _line.enabled = true;
-        transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
+        //transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
         
         RaycastHit hit; 
-        NavMeshHit navHit; 
+        // NavMeshHit navHit; 
         bool hitSomething = false; 
          
-        hitSomething = Physics.Raycast(GoController.transform.position, GoController.transform.forward, out hit, 100f); 
+        hitSomething = Physics.Raycast(transform.position, transform.forward, out hit, 100f); 
      
         if (!hitSomething) return; 
      
-        bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas); 
-        Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green); 
+        // bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas); 
+        // Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green); 
          
          
      
-        if (OVRInput.GetDown(OVRInput.Button.One))
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
             clickControl(hit);
         } 
