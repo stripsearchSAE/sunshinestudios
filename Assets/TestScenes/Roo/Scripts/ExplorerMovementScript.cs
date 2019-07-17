@@ -25,6 +25,10 @@ public class ExplorerMovementScript : MonoBehaviour
     [Header("Navmesh Agent")]
     public NavMeshAgent explorer;
     public float explorerStoppingDistance;
+
+    public bool onMoveable = false;
+    public GameObject theMoveable;
+    
     
     // Start is called before the first frame update
     void Start()

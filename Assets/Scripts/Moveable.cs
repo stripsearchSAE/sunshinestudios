@@ -18,26 +18,20 @@ public class Moveable : MonoBehaviour
         controlledHere = new List<GameObject>();
         end = new Vector3(destination.transform.position.x, destination.transform.position.y + 2, destination.transform.position.z);
     }
+    
+    
+    
 
-    private void OnTriggerEnter(Collider other)
+    public void Enter(ExplorerMovementScript other)
     {
-        
-        if (other.tag == "Explorer")
-        {
-            Debug.Log("added");
-            controlledHere.Add(other.gameObject);
-        }
+        Debug.Log("Added");
+        controlledHere.Add(other.gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void Exit(ExplorerMovementScript other)
     {
-        GameObject temp = other.gameObject;
-        
-        if (temp.tag == "Explorer")
-        {
-            Debug.Log("left");
-            controlledHere.Remove(temp);
-        }
+        Debug.Log("left");
+        controlledHere.Remove(other.gameObject);
     }
 
 

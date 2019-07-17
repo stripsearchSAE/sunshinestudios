@@ -24,7 +24,7 @@ public class BaseController : MonoBehaviour
             }
         } 
         
-        else if ((hit.collider.tag == "Walkable") || (hit.collider.tag == "Moves")) // only proceeds if active an directed to a walkable surface 
+        else if (hit.collider.tag == "Moves")
         {
             Moveable tempa = hit.collider.GetComponent<Moveable>();
             
@@ -32,10 +32,39 @@ public class BaseController : MonoBehaviour
             {
                 tempa.Move();
             }
+
+            else
+            {
+                foreach (var explorer in controlled) 
+                {
+                    //tell the explorer its on a moveable
+                    explorer.onMoveable = true;
+                    explorer.theMoveable = hit.collider.gameObject;
+                    //tell the moveable which explorer it has
+                    tempa.Enter(explorer);
+                    
+                    //moves
+                    NavMeshHit tempHit; 
+                    NavMesh.SamplePosition(hit.point, out tempHit, 2.0f, NavMesh.AllAreas);
+                    explorer.goMoving(tempHit.position);
+                    controlled.Remove(explorer);
+                } 
+            }
+        }
+        
+        else if (hit.collider.tag == "Walkable") // only proceeds if active an directed to a walkable surface 
+        {
+            
             
             List<ExplorerMovementScript> temp = new List<ExplorerMovementScript>(controlled);
-            foreach (var explorer in temp) 
+            foreach (var explorer in temp)
             {
+                if (explorer.onMoveable == true)
+                {
+                 //goto its moveable, tell its inot on there anymore
+                 explorer.onMoveable = false;
+                 explorer.theMoveable.GetComponent<Moveable>().Exit(explorer);
+                }
                 NavMeshHit tempHit; 
                 NavMesh.SamplePosition(hit.point, out tempHit, 2.0f, NavMesh.AllAreas);
                 explorer.goMoving(tempHit.position);
