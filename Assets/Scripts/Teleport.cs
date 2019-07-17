@@ -30,7 +30,7 @@ public class Teleport : MonoBehaviour
             state.isActive = false;
             state.isTravelling = false;
             state.explorer.isStopped = false;
-            state.ExplorerStates = ExplorerMovementScript.states.IDLE;
+            state.goIdle();
             other.transform.position = Exit.position;
             
         }
