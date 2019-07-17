@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.UIElements;
 
 public class BaseController : MonoBehaviour
 {
@@ -22,8 +23,16 @@ public class BaseController : MonoBehaviour
                 temp.isActive = false;
             }
         } 
-        else if (hit.collider.tag == "Walkable") // only proceeds if active an directed to a walkable surface 
+        
+        else if ((hit.collider.tag == "Walkable") || (hit.collider.tag == "Moves")) // only proceeds if active an directed to a walkable surface 
         {
+            Moveable tempa = hit.collider.GetComponent<Moveable>();
+            
+            if (controlled.Count == 0)
+            {
+                tempa.Move();
+            }
+            
             List<ExplorerMovementScript> temp = new List<ExplorerMovementScript>(controlled);
             foreach (var explorer in temp) 
             {
