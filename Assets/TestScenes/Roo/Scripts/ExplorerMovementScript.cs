@@ -25,6 +25,7 @@ public class ExplorerMovementScript : MonoBehaviour
     [Header("Navmesh Agent")]
     public NavMeshAgent explorer;
     public float explorerStoppingDistance;
+    public float endPointTolerance = 0.2f;
 
     public bool onMoveable = false;
     public GameObject theMoveable;
@@ -64,7 +65,7 @@ public class ExplorerMovementScript : MonoBehaviour
             }
         }
         */
-        if (isTravelling && Vector3.Distance(transform.position, explorer.destination) < 0.2)
+        if (isTravelling && Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
         {
             goIdle();
         }
