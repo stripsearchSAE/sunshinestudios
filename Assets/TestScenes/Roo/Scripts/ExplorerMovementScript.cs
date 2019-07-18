@@ -26,6 +26,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public NavMeshAgent explorer;
     public float explorerStoppingDistance;
     public float endPointTolerance = 0.2f;
+    public float maxDistancePerTurn = 10f;
 
     public bool onMoveable = false;
     public GameObject theMoveable;

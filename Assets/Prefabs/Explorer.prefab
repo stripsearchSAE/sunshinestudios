@@ -185,6 +185,10 @@ MonoBehaviour:
   AddToJumpHeight: 0.5
   explorer: {fileID: 0}
   explorerStoppingDistance: 0
+  endPointTolerance: 0.2
+  maxDistancePerTurn: 20
+  onMoveable: 0
+  theMoveable: {fileID: 0}
 --- !u!114 &6546780477206537265
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,9 +6,6 @@ using UnityEngine.Experimental.UIElements;
 
 public class BaseController : MonoBehaviour
 {
-    public float navMeshHitTolerance = 2f;
-    public float maxMovementDistance = 10f;
-
     public List<ExplorerMovementScript> controlled; 
     public void clickControl(RaycastHit hit)
     {
@@ -73,11 +70,12 @@ public class BaseController : MonoBehaviour
 
                 // josh is this in the correct spot?
                 float dist = Vector3.Distance(tempHit.position, explorer.transform.position);
-                if(dist < maxMovementDistance)
+                if(dist > explorer.maxDistancePerTurn)
                 {
                     StartCoroutine(explorer.Denial());
                     return;
                 }
+                // debug.log(dist);
                 explorer.goMoving(tempHit.position);
                 controlled.Remove(explorer);
             } 
