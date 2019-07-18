@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{a62b600d-b9da-43e4-bb83-a3a034e25c30}">
+        <property name="assetPath">
+            <value>Female_Grunts_10.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>0.69999999999999996</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{d31e5c3a-dd0a-4fa3-ac53-5467387e23e7}</destination>
+        </relationship>
+    </object>
+</objects>

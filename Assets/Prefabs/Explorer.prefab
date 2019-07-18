@@ -189,6 +189,7 @@ MonoBehaviour:
   maxDistancePerTurn: 20
   onMoveable: 0
   theMoveable: {fileID: 0}
+  AudioManagerObject: {fileID: 0}
 --- !u!114 &6546780477206537265
 MonoBehaviour:
   m_ObjectHideFlags: 0
