@@ -31,15 +31,14 @@ public class ExplorerMovementScript : MonoBehaviour
     public bool onMoveable = false;
     public GameObject theMoveable;
 
-    public GameObject AudioManagerObject;
-    BaseAudioManager AudioManager;
+    PlayerAudio AudioPlayer;
     // Start is called before the first frame update
     void Start()
     {
         explorer = GetComponent<NavMeshAgent>();
         _rend.material.color = Color.black;
         explorer.stoppingDistance = explorerStoppingDistance;
-        AudioManager = AudioManagerObject.GetComponent<BaseAudioManager>();
+        AudioPlayer = GetComponent<PlayerAudio>();
     }
 
     public void goMoving(Vector3 target)
@@ -88,7 +87,7 @@ public class ExplorerMovementScript : MonoBehaviour
         _isEnabled = false;
         isActive = false;
         // put denial sound and animation here
-        AudioManager.Playsound("femaleDenial01");
+        AudioPlayer.Playsound("femaleDenial01");
         yield return new WaitForSeconds(1f);
         _isEnabled = true;
     }
