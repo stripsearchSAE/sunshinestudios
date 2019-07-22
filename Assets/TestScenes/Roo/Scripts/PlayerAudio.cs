@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    public static FMOD.Studio.EventInstance femaleDenial01; // 3D female character sounds
+    public FMOD.Studio.EventInstance femaleDenial; // 3D female character sounds
 
     // Start is called before the first frame update
     void Start()
     {
-        femaleDenial01 = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial01");
+        femaleDenial = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial01");
+        //femaleDenial[1] = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial02");
     }
 
     // Update is called once per frame
@@ -21,6 +22,7 @@ public class PlayerAudio : MonoBehaviour
     // list of all the 3D sounds to be called
     public void Playsound(string clip)
     {
-        switch (clip) { case ("femaleDenial01"): femaleDenial01.start(); break; }
+        switch (clip) { case ("femaleDenial"): femaleDenial.start(); break; }
+        // switch (clip) { case ("femaleDenial"): femaleDenial[Random.Range(0,femaleDenial.Length)].start(); break; }
     }
 }
