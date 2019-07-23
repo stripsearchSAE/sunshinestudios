@@ -9,6 +9,7 @@ public class PlayerAudio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //string fn = "event:/Voices/Female/Denial" + (i + 1).ToString();
         femaleDenial[0] = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial01");
         femaleDenial[1] = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial02");
     }
@@ -22,7 +23,7 @@ public class PlayerAudio : MonoBehaviour
     // list of all the 3D sounds to be called
     public void ChooseSound(string clipToChoose)
     {
-        switch (clipToChoose) { case ("femaleDenial"): PlaySound3D(femaleDenial[0]); break; }
+        switch (clipToChoose) { case ("femaleDenial"): PlaySound3D(femaleDenial[Random.Range(0,femaleDenial.Length)]); break; }
     }
 
     private void PlaySound3D(FMOD.Studio.EventInstance clipToPlay)
