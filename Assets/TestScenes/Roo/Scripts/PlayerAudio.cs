@@ -11,7 +11,9 @@ public class PlayerAudio : MonoBehaviour
     {
         //string fn = "event:/Voices/Female/Denial" + (i + 1).ToString();
         femaleDenial[0] = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial01");
+        femaleDenial[0].set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
         femaleDenial[1] = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial02");
+        femaleDenial[1].set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class PlayerAudio : MonoBehaviour
 
     private void PlaySound3D(FMOD.Studio.EventInstance clipToPlay)
     {
+        // change to the following and do the necessary changes in the logic ... FMODUnity.RuntimeManager.PlayOneShotAttached("event:/" + clipToPlay, this.gameObject);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(clipToPlay, GetComponent<Transform>(), GetComponent<Rigidbody>());
         clipToPlay.start();
     }
