@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
+using FMOD.Studio;
 
 public class ExplorerMovementScript : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public GameObject theMoveable;
 
     PlayerAudio AudioPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,8 +89,8 @@ public class ExplorerMovementScript : MonoBehaviour
         _isEnabled = false;
         isActive = false;
         // put denial sound and animation here
-        AudioPlayer.Playsound("femaleDenial");
-        yield return new WaitForSeconds(1f);
+        AudioPlayer.ChooseSound("femaleDenial");
+        yield return new WaitForSeconds(0.1f);
         _isEnabled = true;
     }
 

@@ -70,11 +70,11 @@ public class BaseController : MonoBehaviour
 
                 // josh is this in the correct spot?
                 float dist = Vector3.Distance(tempHit.position, explorer.transform.position);
-                if(dist > explorer.maxDistancePerTurn)
+               /* if(dist > explorer.maxDistancePerTurn)
                 {
                     StartCoroutine(explorer.Denial());
                     return;
-                }
+                } */
                 // debug.log(dist);
                 explorer.goMoving(tempHit.position);
                 controlled.Remove(explorer);
