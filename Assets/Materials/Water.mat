@@ -89,4 +89,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MoveDirection: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 0.01, g: 0.01, b: 1, a: 1}
-    - _WaterColor: {r: 0, g: 0.56467056, b: 1, a: 1}
+    - _WaterColor: {r: 0, g: 0.48640442, b: 1, a: 1}
