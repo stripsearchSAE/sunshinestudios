@@ -9,7 +9,7 @@ public class MouseInput : BaseController
     void Update() 
     { 
         RaycastHit hit; 
-        NavMeshHit navHit; 
+        //NavMeshHit navHit; 
         bool hitSomething = false; 
          
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position 
@@ -17,8 +17,8 @@ public class MouseInput : BaseController
      
         if (!hitSomething) return; 
      
-        bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas); 
-        Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green); 
+        //bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas); 
+        //Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green); 
          
          
         if (Input.GetMouseButtonDown(0)) 

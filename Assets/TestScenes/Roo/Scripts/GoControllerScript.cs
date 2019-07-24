@@ -31,8 +31,8 @@ public class GoControllerScript : BaseController
          
         hitSomething = Physics.Raycast(transform.position, transform.forward, out hit, 100f); 
      
-        if (!hitSomething) return; 
-     
+        if (!hitSomething) return;
+        Debug.Log("got parsed hit somehting");
         // bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas); 
         // Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green); 
          
