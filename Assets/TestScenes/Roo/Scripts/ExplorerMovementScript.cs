@@ -28,6 +28,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public float explorerStoppingDistance;
     public float endPointTolerance = 0.2f;
     public float maxDistancePerTurn = 10f;
+    public float waitForDenialAnimation = 0.5f;
 
     public bool onMoveable = false;
     public GameObject theMoveable;
@@ -89,8 +90,9 @@ public class ExplorerMovementScript : MonoBehaviour
         _isEnabled = false;
         isActive = false;
         // put denial sound and animation here
-        AudioPlayer.ChooseSound("femaleDenial");
-        yield return new WaitForSeconds(0.1f);
+        AudioPlayer.PlayVoice("femaleDenial");
+
+        yield return new WaitForSeconds(waitForDenialAnimation);
         _isEnabled = true;
     }
 
