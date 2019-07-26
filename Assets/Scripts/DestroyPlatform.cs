@@ -20,7 +20,7 @@ public class DestroyPlatform : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Rock"))
+        if (gameObject.CompareTag("Rock"))
         {
             Destroy(Platform);
             Destroy(Rock);

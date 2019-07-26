@@ -8,6 +8,7 @@ TagManager:
   - Walkable
   - Rock
   - Moves
+  - Platform
   layers:
   - Default
   - TransparentFX
