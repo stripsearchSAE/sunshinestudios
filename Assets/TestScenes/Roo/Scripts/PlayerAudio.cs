@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    // FMOD.Studio.EventInstance femaleDenial = new FMOD.Studio.EventInstance[5]; // 3D female character sounds
+    [Header("Audio is Male by Default")]
+    public bool isFemale = false;
+    private string gender = "Male";
 
     // Start is called before the first frame update
     void Start()
     {
-        // string fn = "event:/Voices/Female/Denial" + (i + 1).ToString();
-        // femaleDenial = FMODUnity.RuntimeManager.CreateInstance("event:/Voices/Female/Denial01");
-        // femaleDenial.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        if (isFemale) gender = "Female";
     }
 
     // Update is called once per frame
@@ -23,14 +23,6 @@ public class PlayerAudio : MonoBehaviour
     // list of all the 3D sounds to be called
     public void PlayVoice(string clip)
     {
-        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/Voices/" + clip, this.gameObject);
-        //switch (clipToChoose) { case ("femaleDenial"): PlaySound3D(femaleDenial[Random.Range(0,femaleDenial.Length)]); break; }
+        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/Voices/" + gender + "/" + clip, this.gameObject);
     }
-
-    /* private void PlaySound3D(FMOD.Studio.EventInstance clipToPlay)
-    {
-        // change to the following and do the necessary changes in the logic ... FMODUnity.RuntimeManager.PlayOneShotAttached("event:/" + clipToPlay, this.gameObject);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(clipToPlay, GetComponent<Transform>(), GetComponent<Rigidbody>());
-        clipToPlay.start();
-    } */
 }

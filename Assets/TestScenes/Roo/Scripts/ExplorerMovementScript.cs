@@ -90,7 +90,7 @@ public class ExplorerMovementScript : MonoBehaviour
         _isEnabled = false;
         isActive = false;
         // put denial sound and animation here
-        AudioPlayer.PlayVoice("femaleDenial");
+        AudioPlayer.PlayVoice("Denial");
 
         yield return new WaitForSeconds(waitForDenialAnimation);
         _isEnabled = true;
