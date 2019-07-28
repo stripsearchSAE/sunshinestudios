@@ -88,12 +88,12 @@ public class ExplorerMovementScript : MonoBehaviour
     public IEnumerator Denial()
     {
         _isEnabled = false;
-        isActive = false;
         // put denial sound and animation here
         AudioPlayer.PlayVoice("Denial");
 
         yield return new WaitForSeconds(waitForDenialAnimation);
         _isEnabled = true;
+        goIdle();
     }
 
 }

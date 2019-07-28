@@ -16,15 +16,16 @@ MonoBehaviour:
   - {fileID: 114193008922070026}
   - {fileID: 114903475024154666}
   EditorEvents:
-  - {fileID: 114821385869791932}
-  - {fileID: 114931425572647954}
-  - {fileID: 114325471863705484}
-  - {fileID: 114097843027035368}
+  - {fileID: 114986780582747720}
+  - {fileID: 114944366644886834}
+  - {fileID: 114454192821967252}
+  - {fileID: 114575307052408568}
+  - {fileID: 114855166025204406}
   MasterBanks:
   - {fileID: 114903475024154666}
   StringsBanks:
   - {fileID: 114193008922070026}
-  stringsBankWriteTime: 636995680488408804
+  stringsBankWriteTime: 636999213391565948
   cacheVersion: 3
 --- !u!114 &114097843027035368
 MonoBehaviour:
@@ -62,11 +63,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636995680488408804
+  lastModified: 636999213391565948
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 858
+    Value: 914
   Exists: 1
 --- !u!114 &114325471863705484
 MonoBehaviour:
@@ -81,6 +82,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Voices/FemaleDenial
+  guid: 686af3e68b5738418f6b2c0bfe39f48a
+  Banks:
+  - {fileID: 114903475024154666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 659
+--- !u!114 &114454192821967252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/Female/Celebration
+  guid: 53b537a5ce50c44bafe6c1b6b2266ac1
+  Banks:
+  - {fileID: 114903475024154666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 1316
+--- !u!114 &114575307052408568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/Female/Denial
   guid: 686af3e68b5738418f6b2c0bfe39f48a
   Banks:
   - {fileID: 114903475024154666}
@@ -114,6 +161,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
+--- !u!114 &114855166025204406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/Female/Attention
+  guid: a1988a5f5a49314da10539ba8d634fcf
+  Banks:
+  - {fileID: 114903475024154666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 966
 --- !u!114 &114903475024154666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,11 +198,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\rooko\Documents\Unity\SunshineVR\Assets\Audio\Build\Desktop\Master
     Bank.bank
-  lastModified: 636995680488319040
+  lastModified: 636999213391426613
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 146112
+    Value: 183968
   Exists: 1
 --- !u!114 &114931425572647954
 MonoBehaviour:
@@ -157,6 +227,52 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 60
   Length: 1316
+--- !u!114 &114944366644886834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/Male/Denial
+  guid: 0ede26bbeafcbf43891cb9f68c8a8ce6
+  Banks:
+  - {fileID: 114903475024154666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 864
+--- !u!114 &114986780582747720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/Female/Jump
+  guid: 081cbce3bc24d44c900f80e102beb2b9
+  Banks:
+  - {fileID: 114903475024154666}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 60
+  Length: 816
 --- !u!114 &114993058473513992
 MonoBehaviour:
   m_ObjectHideFlags: 0

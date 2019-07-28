@@ -73,6 +73,7 @@ public class BaseController : MonoBehaviour
                 if(dist > explorer.maxDistancePerTurn)
                 {
                     StartCoroutine(explorer.Denial());
+                    controlled.Remove(explorer);
                     return;
                 } 
                 // debug.log(dist);
@@ -84,7 +85,8 @@ public class BaseController : MonoBehaviour
         { 
             foreach (var explorer in controlled) 
             { 
-                StartCoroutine(explorer.Denial()); 
+                StartCoroutine(explorer.Denial());
+                controlled.Remove(explorer);
             } 
         }
     }
