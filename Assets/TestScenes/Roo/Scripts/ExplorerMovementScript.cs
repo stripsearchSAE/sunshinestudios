@@ -35,6 +35,8 @@ public class ExplorerMovementScript : MonoBehaviour
 
     PlayerAudio AudioPlayer;
 
+    private bool jumpSoundEnabled = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,14 @@ public class ExplorerMovementScript : MonoBehaviour
             }
         }
         */
+    
+        if(explorer.isOnOffMeshLink && jumpSoundEnabled)
+        {
+            jumpSoundEnabled = false;
+            AudioPlayer.PlayVoice("Jump");
+            StartCoroutine(ResetJumpSound());
+        }
+
         if (isTravelling && Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
         {
             goIdle();
@@ -82,7 +92,6 @@ public class ExplorerMovementScript : MonoBehaviour
             explorer.isStopped = true;
             isTravelling = false;
         }
-
     }
 
     public IEnumerator Denial()
@@ -94,6 +103,12 @@ public class ExplorerMovementScript : MonoBehaviour
         yield return new WaitForSeconds(waitForDenialAnimation);
         _isEnabled = true;
         goIdle();
+    }
+
+    public IEnumerator ResetJumpSound()
+    {
+        yield return new WaitForSeconds(1f);
+        jumpSoundEnabled = true;
     }
 
 }
