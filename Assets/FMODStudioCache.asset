@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114193008922070026}
-  - {fileID: 114903475024154666}
+  - {fileID: 114836351678416244}
   EditorEvents:
   - {fileID: 114986780582747720}
   - {fileID: 114944366644886834}
@@ -22,10 +22,10 @@ MonoBehaviour:
   - {fileID: 114575307052408568}
   - {fileID: 114855166025204406}
   MasterBanks:
-  - {fileID: 114903475024154666}
+  - {fileID: 114836351678416244}
   StringsBanks:
   - {fileID: 114193008922070026}
-  stringsBankWriteTime: 636999213391565948
+  stringsBankWriteTime: 636999877410889684
   cacheVersion: 3
 --- !u!114 &114097843027035368
 MonoBehaviour:
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636999213391565948
+  lastModified: 636999877410889684
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Celebration
   guid: 53b537a5ce50c44bafe6c1b6b2266ac1
   Banks:
-  - {fileID: 114903475024154666}
+  - {fileID: 114836351678416244}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -130,7 +130,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Denial
   guid: 686af3e68b5738418f6b2c0bfe39f48a
   Banks:
-  - {fileID: 114903475024154666}
+  - {fileID: 114836351678416244}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -161,6 +161,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
+--- !u!114 &114836351678416244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\mdoyle4\Desktop\sunshinestudios\Assets\Audio\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636999877410909628
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 183968
+  Exists: 1
 --- !u!114 &114855166025204406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +196,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Attention
   guid: a1988a5f5a49314da10539ba8d634fcf
   Banks:
-  - {fileID: 114903475024154666}
+  - {fileID: 114836351678416244}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -242,7 +262,7 @@ MonoBehaviour:
   Path: event:/Voices/Male/Denial
   guid: 0ede26bbeafcbf43891cb9f68c8a8ce6
   Banks:
-  - {fileID: 114903475024154666}
+  - {fileID: 114836351678416244}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -265,7 +285,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Jump
   guid: 081cbce3bc24d44c900f80e102beb2b9
   Banks:
-  - {fileID: 114903475024154666}
+  - {fileID: 114836351678416244}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
