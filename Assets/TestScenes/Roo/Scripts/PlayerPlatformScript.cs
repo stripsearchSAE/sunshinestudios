@@ -22,6 +22,10 @@ public class PlayerPlatformScript : MonoBehaviour
     public enum States {ELEVATOR, ERRUPTION};
     public States PlatformState;
 
+    public float WaitTime;
+    public bool Errupting;
+    public GameObject Smoke;
+    public GameObject LavaErrupt;
     public GameObject[] Explorers;
     public float platformDampening = 5f;
     public float platformDampeningErruption = 3.5f;
@@ -43,6 +47,14 @@ public class PlayerPlatformScript : MonoBehaviour
 
     private void Update()
     {
+        if(Errupting == true)
+        {
+            WaitTime = WaitTime + Time.deltaTime * 1;
+        }
+        if (WaitTime > 10)
+        {
+            LavaErrupt.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.Space)) PlatformState = States.ERRUPTION; // will swap this out for event call later
         //if (transform.position.y >= 4f) PlatformState = States.ERRUPTION; // for testing
     }
@@ -73,7 +85,11 @@ public class PlayerPlatformScript : MonoBehaviour
                 break;
 
             case States.ERRUPTION:
+                Smoke.SetActive(true);
+                Errupting = true;
                 transform.position = Vector3.SmoothDamp(transform.position, erruptionViewPoint.transform.position, ref velocity, platformDampeningErruption);
+                
+
                 break;
         }
 
