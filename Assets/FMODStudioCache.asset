@@ -24,11 +24,16 @@ MonoBehaviour:
   - {fileID: 114437573540302114}
   - {fileID: 114602021307757796}
   - {fileID: 114437913367135116}
+  - {fileID: 114282644772367410}
+  - {fileID: 114879984046712462}
+  - {fileID: 114610065823216778}
+  - {fileID: 114491865758896242}
+  - {fileID: 114466557905979184}
   MasterBanks:
   - {fileID: 114720456099295234}
   StringsBanks:
   - {fileID: 114193008922070026}
-  stringsBankWriteTime: 636999963961140624
+  stringsBankWriteTime: 637005997716248806
   cacheVersion: 3
 --- !u!114 &114053917360004984
 MonoBehaviour:
@@ -86,11 +91,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636999963961140624
+  lastModified: 637005997716248806
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1042
+    Value: 1280
   Exists: 1
 --- !u!114 &114279258871572810
 MonoBehaviour:
@@ -111,6 +116,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 248736
   Exists: 1
+--- !u!114 &114282644772367410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Lava
+  guid: 1013e1d1f06db048b1e5707873811668
+  Banks:
+  - {fileID: 114720456099295234}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 40
+  Length: 237266
 --- !u!114 &114325471863705484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +231,52 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 60
   Length: 1316
+--- !u!114 &114466557905979184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Atmos/Ocean
+  guid: b5dd1a82526c4c4c893201aad0ee451c
+  Banks:
+  - {fileID: 114720456099295234}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 330171
+--- !u!114 &114491865758896242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bubbling
+  guid: eb43681340601c458079dcf214326f6e
+  Banks:
+  - {fileID: 114720456099295234}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 52181
 --- !u!114 &114506305904214870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +343,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 60
   Length: 750
+--- !u!114 &114610065823216778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/Female/Denial01
+  guid: e7960916f1835e4ea2fc3692417170d9
+  Banks:
+  - {fileID: 114720456099295234}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 533
 --- !u!114 &114720456099295234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,11 +380,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\rooko\Documents\Unity\SunshineVR\Assets\Audio\Build\Desktop\Master
     Bank.bank
-  lastModified: 636999963961080780
+  lastModified: 637005997715923925
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 248736
+    Value: 8240704
   Exists: 1
 --- !u!114 &114821385869791932
 MonoBehaviour:
@@ -355,6 +452,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 60
   Length: 966
+--- !u!114 &114879984046712462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Atmos/Burning
+  guid: 4099e4601d786b42b2223454bd73b89e
+  Banks:
+  - {fileID: 114720456099295234}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 27242
 --- !u!114 &114903475024154666
 MonoBehaviour:
   m_ObjectHideFlags: 0

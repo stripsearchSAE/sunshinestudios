@@ -156,6 +156,7 @@ PlayerSettings:
     Android: com.Sunshine.LavaEscape
     Standalone: com.oculus.UnitySample
     iOS: com.oculus.UnitySample
+    tvOS: com.oculus.UnitySample
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 25

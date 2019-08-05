@@ -36,6 +36,8 @@ public class PlayerPlatformScript : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero; // refernce for smoothdamp
 
+    private bool hasCalledSound = false;
+
     // private bool _erruptionHappening = false;
 
     // Start is called before the first frame update
@@ -85,8 +87,17 @@ public class PlayerPlatformScript : MonoBehaviour
                 break;
 
             case States.ERRUPTION:
+
                 Smoke.SetActive(true);
                 Errupting = true;
+
+                if (!hasCalledSound)
+                {
+                    hasCalledSound = true;
+                    BaseAudioManager.Playsound("startOcean");
+                    BaseAudioManager.Playsound("stopVolcano");
+                }
+
                 transform.position = Vector3.SmoothDamp(transform.position, erruptionViewPoint.transform.position, ref velocity, platformDampeningErruption);
                 
 

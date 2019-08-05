@@ -55,7 +55,7 @@ public class BaseAudioManager : MonoBehaviour
 
        // atmos bank
        volcanoAtmos = FMODUnity.RuntimeManager.CreateInstance("event:/Atmos/Burning");
-       // oceanAtmos = FMODUnity.RuntimeManager.CreateInstance("event:/Atmos/Ocean");
+       oceanAtmos = FMODUnity.RuntimeManager.CreateInstance("event:/Atmos/Ocean");
 
        // music
        // music = FMODUnity.RuntimeManager.CreateInstance("event:/Score/Music");
