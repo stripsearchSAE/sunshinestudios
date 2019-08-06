@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class ExplorerEndSequence : MonoBehaviour
 {
+    public delegate void FinalEvent();
+    public static event FinalEvent StartFinalSequence;
+
     public Vector3 EndingPosition;
     public ExplorerMovementScript Movement;
     public GameObject Explorer1;
@@ -44,6 +47,7 @@ public class ExplorerEndSequence : MonoBehaviour
             Explorer1.transform.parent = Platform.transform;
             Explorer2.GetComponent<ExplorerMovementScript>().enabled = false;
             Explorer2.transform.parent = Platform.transform;
+            if (StartFinalSequence != null) StartFinalSequence();
         }
         yield return null;
     }

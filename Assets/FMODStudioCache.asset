@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114193008922070026}
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   EditorEvents:
   - {fileID: 114986780582747720}
   - {fileID: 114944366644886834}
@@ -31,10 +31,10 @@ MonoBehaviour:
   - {fileID: 114466557905979184}
   - {fileID: 114630660861051234}
   MasterBanks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   StringsBanks:
   - {fileID: 114193008922070026}
-  stringsBankWriteTime: 637006895306356291
+  stringsBankWriteTime: 637007275485646071
   cacheVersion: 3
 --- !u!114 &114030413064888388
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Build\Desktop\Master Bank.strings.bank
-  lastModified: 637006895306356291
+  lastModified: 637007275485646071
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -236,7 +236,7 @@ MonoBehaviour:
   guid: 1013e1d1f06db048b1e5707873811668
   Banks:
   - {fileID: 114720456099295234}
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   Path: event:/Voices/Male/Attention
   guid: 143a07f4c6ad6c4d80a41b6bfbd9ef71
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -328,7 +328,7 @@ MonoBehaviour:
   Path: event:/Voices/Male/Celebration
   guid: 8ae2e5fe24a4894b9750afdf3ebae218
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -351,7 +351,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Celebration
   guid: 53b537a5ce50c44bafe6c1b6b2266ac1
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
   guid: b5dd1a82526c4c4c893201aad0ee451c
   Banks:
   - {fileID: 114720456099295234}
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -383,6 +383,25 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 330171
+--- !u!114 &114481162791840570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Unity\LavaEscape\Assets\Audio\Build\Desktop\Master Bank.bank
+  lastModified: 637007275485635831
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 8904224
+  Exists: 1
 --- !u!114 &114491865758896242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +460,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Denial
   guid: 686af3e68b5738418f6b2c0bfe39f48a
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -464,7 +483,7 @@ MonoBehaviour:
   Path: event:/Voices/Male/Jump
   guid: 7c3da97d39afb744a7daa7b92accbc21
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -488,7 +507,7 @@ MonoBehaviour:
   guid: e7960916f1835e4ea2fc3692417170d9
   Banks:
   - {fileID: 114720456099295234}
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -511,7 +530,7 @@ MonoBehaviour:
   Path: event:/SFX/Eruption01
   guid: d8d229ec244f164e83428f8304946844
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -597,7 +616,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Attention
   guid: a1988a5f5a49314da10539ba8d634fcf
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -621,7 +640,7 @@ MonoBehaviour:
   guid: 4099e4601d786b42b2223454bd73b89e
   Banks:
   - {fileID: 114720456099295234}
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -687,7 +706,7 @@ MonoBehaviour:
   Path: event:/Voices/Male/Denial
   guid: 0ede26bbeafcbf43891cb9f68c8a8ce6
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -710,7 +729,7 @@ MonoBehaviour:
   Path: event:/Voices/Female/Jump
   guid: 081cbce3bc24d44c900f80e102beb2b9
   Banks:
-  - {fileID: 114196449660037956}
+  - {fileID: 114481162791840570}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1

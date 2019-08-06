@@ -43,6 +43,7 @@ public class PlayerPlatformScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ExplorerEndSequence.StartFinalSequence += SwitchStates;
         PlatformState = States.ELEVATOR;
         Explorers = GameObject.FindGameObjectsWithTag("Explorer"); // find all explorers in the scene
     }
@@ -107,7 +108,10 @@ public class PlayerPlatformScript : MonoBehaviour
 
     }
 
-
+    void SwitchStates()
+    {
+        PlatformState = States.ERRUPTION;
+    }
     // if the explorer falls into the lava, height will return the lava height
     private float CheckExplorerPosition(float explorerPos)
     {
