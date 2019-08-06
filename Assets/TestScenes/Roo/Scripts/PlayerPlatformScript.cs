@@ -24,8 +24,6 @@ public class PlayerPlatformScript : MonoBehaviour
 
     public float WaitTime;
     public bool Errupting;
-    public GameObject Smoke;
-    public GameObject LavaErrupt;
     public GameObject[] Explorers;
     public float platformDampening = 5f;
     public float platformDampeningErruption = 3.5f;
@@ -43,21 +41,13 @@ public class PlayerPlatformScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ExplorerEndSequence.StartFinalSequence += SwitchStates;
+        ExplorerEndSequence.StartFinalSequence += SwitchStates; 
         PlatformState = States.ELEVATOR;
         Explorers = GameObject.FindGameObjectsWithTag("Explorer"); // find all explorers in the scene
     }
 
     private void Update()
     {
-        if(Errupting == true)
-        {
-            WaitTime = WaitTime + Time.deltaTime * 1;
-        }
-        if (WaitTime > 9.5f)
-        {
-            LavaErrupt.SetActive(true);
-        }
         if (Input.GetKeyDown(KeyCode.Space)) PlatformState = States.ERRUPTION; // will swap this out for event call later
         //if (transform.position.y >= 4f) PlatformState = States.ERRUPTION; // for testing
     }
@@ -88,9 +78,6 @@ public class PlayerPlatformScript : MonoBehaviour
                 break;
 
             case States.ERRUPTION:
-
-                Smoke.SetActive(true);
-                Errupting = true;
 
                 if (!hasCalledSound)
                 {
