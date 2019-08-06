@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallingRock : MonoBehaviour
 {
     public GameObject Rock;
+    
 
     // Start is called before the first frame update
     void Start()
