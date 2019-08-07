@@ -7,6 +7,7 @@ public class ParticleBehavior : MonoBehaviour
     public GameObject Smoke;
     public GameObject LavaErrupt;
     public GameObject Rocks;
+    public GameObject Steam;
 
     public float timeToWait;
     // Start is called before the first frame update
@@ -23,9 +24,12 @@ public class ParticleBehavior : MonoBehaviour
     IEnumerator StartSequence()
     {
         Smoke.SetActive(true);
-        yield return new WaitForSeconds(timeToWait);
-        //End Smoke
+        Steam.GetComponent<ParticleSystem>().Stop();
 
+        yield return new WaitForSeconds(timeToWait);
+
+        Smoke.GetComponent<ParticleSystem>().Stop();
+        
         LavaErrupt.SetActive(true);
         Rocks.SetActive(true);
     }

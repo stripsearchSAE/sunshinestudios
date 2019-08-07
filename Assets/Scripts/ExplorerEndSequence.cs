@@ -26,7 +26,7 @@ public class ExplorerEndSequence : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(Explorer1.transform.position, endPosition.position) < distanceCheck && !Final)
+        if (Vector3.Distance(Explorer1.transform.position, endPosition.position) < distanceCheck && !Final || Input.GetKeyDown(KeyCode.Space))
         {
             Final = true;
             StartCoroutine(LastPoint());

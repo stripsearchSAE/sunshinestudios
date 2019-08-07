@@ -46,12 +46,6 @@ public class PlayerPlatformScript : MonoBehaviour
         Explorers = GameObject.FindGameObjectsWithTag("Explorer"); // find all explorers in the scene
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) PlatformState = States.ERRUPTION; // will swap this out for event call later
-        //if (transform.position.y >= 4f) PlatformState = States.ERRUPTION; // for testing
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
