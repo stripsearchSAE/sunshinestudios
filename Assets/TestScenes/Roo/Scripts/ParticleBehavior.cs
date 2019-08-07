@@ -6,6 +6,7 @@ public class ParticleBehavior : MonoBehaviour
 {
     public GameObject Smoke;
     public GameObject LavaErrupt;
+    public GameObject Rocks;
 
     public float timeToWait;
     // Start is called before the first frame update
@@ -23,7 +24,9 @@ public class ParticleBehavior : MonoBehaviour
     {
         Smoke.SetActive(true);
         yield return new WaitForSeconds(timeToWait);
+        //End Smoke
 
         LavaErrupt.SetActive(true);
+        Rocks.SetActive(true);
     }
 }
