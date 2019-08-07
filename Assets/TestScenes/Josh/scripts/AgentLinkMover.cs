@@ -11,20 +11,25 @@ public enum OffMeshLinkMoveMethod {
 }
  
 [RequireComponent (typeof (NavMeshAgent))]
+[RequireComponent (typeof (ExplorerMovementScript))]
 public class AgentLinkMover : MonoBehaviour {
    public OffMeshLinkMoveMethod method = OffMeshLinkMoveMethod.Parabola;
    public AnimationCurve curve = new AnimationCurve ();
    IEnumerator Start () {
      NavMeshAgent agent = GetComponent<NavMeshAgent> ();
+     ExplorerMovementScript explorer = GetComponent<ExplorerMovementScript> ();
      agent.autoTraverseOffMeshLink = false;
      while (true) {
        if (agent.isOnOffMeshLink) {
+         explorer.isJumping = true;
          if (method == OffMeshLinkMoveMethod.NormalSpeed)
            yield return StartCoroutine (NormalSpeed (agent));
          else if (method == OffMeshLinkMoveMethod.Parabola)
            yield return StartCoroutine (Parabola (agent, 2.0f, 0.5f));
          else if (method == OffMeshLinkMoveMethod.Curve)
            yield return StartCoroutine (Curve (agent, 0.5f));
+         explorer.isJumping = false;
+         explorer.hasLanded = true;
          agent.CompleteOffMeshLink ();
        }
        yield return null;

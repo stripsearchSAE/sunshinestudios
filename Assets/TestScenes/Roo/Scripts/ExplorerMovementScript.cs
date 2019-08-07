@@ -14,6 +14,8 @@ public class ExplorerMovementScript : MonoBehaviour
     */
     public bool isActive = false; // change by clicking on self. only active navagents will move
     public bool isTravelling = false;
+    public bool isJumping = false;
+    public bool hasLanded = false;
     private bool _isEnabled = true; // set this to false to stop player clicking on explorer to active ie. during an animation.
     public float explorerTimeOut = 5;
     public Renderer _rend;
@@ -33,6 +35,8 @@ public class ExplorerMovementScript : MonoBehaviour
     public bool onMoveable = false;
     public GameObject theMoveable;
 
+    [Header("feedback")]
+    public Animator animatingModel;
     PlayerAudio AudioPlayer;
 
     private bool jumpSoundEnabled = true;
@@ -44,6 +48,7 @@ public class ExplorerMovementScript : MonoBehaviour
         _rend.material.color = Color.black;
         explorer.stoppingDistance = explorerStoppingDistance;
         AudioPlayer = GetComponent<PlayerAudio>();
+        animatingModel = GetComponent<Animator>();
     }
 
     public void goMoving(Vector3 target)
@@ -72,6 +77,14 @@ public class ExplorerMovementScript : MonoBehaviour
             }
         }
         */
+
+        if (animatingModel)
+        {
+            animatingModel.SetBool("Moving",isTravelling);
+            animatingModel.SetBool("Jumping",isJumping);
+            animatingModel.SetBool("Landing",hasLanded);
+            if (hasLanded) hasLanded = false;
+        }
     
         if(explorer.isOnOffMeshLink && jumpSoundEnabled)
         {
