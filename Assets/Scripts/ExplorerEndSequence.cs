@@ -11,7 +11,6 @@ public class ExplorerEndSequence : MonoBehaviour
     public Transform endPosition;
     private ExplorerMovementScript Movement;
     public GameObject Explorer1;
-   // public GameObject Explorer2;
     public GameObject Platform;
     bool Final = false;
 
@@ -50,8 +49,6 @@ public class ExplorerEndSequence : MonoBehaviour
             Debug.Log("Howdy");
             Explorer1.GetComponent<NavMeshAgent>().enabled = false;
             Explorer1.transform.parent = Platform.transform;
-           // Explorer2.GetComponent<ExplorerMovementScript>().enabled = false;
-           // Explorer2.transform.parent = Platform.transform;
            if (StartFinalSequence != null) StartFinalSequence();
 
         yield return null;
