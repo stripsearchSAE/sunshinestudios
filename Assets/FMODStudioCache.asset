@@ -16,25 +16,24 @@ MonoBehaviour:
   - {fileID: 114193008922070026}
   - {fileID: 114980590001746184}
   EditorEvents:
-  - {fileID: 114986780582747720}
   - {fileID: 114944366644886834}
   - {fileID: 114454192821967252}
   - {fileID: 114575307052408568}
   - {fileID: 114855166025204406}
   - {fileID: 114437573540302114}
-  - {fileID: 114602021307757796}
   - {fileID: 114437913367135116}
   - {fileID: 114282644772367410}
   - {fileID: 114879984046712462}
   - {fileID: 114610065823216778}
   - {fileID: 114491865758896242}
   - {fileID: 114466557905979184}
-  - {fileID: 114630660861051234}
+  - {fileID: 114155536241904086}
+  - {fileID: 114865396976206858}
   MasterBanks:
   - {fileID: 114980590001746184}
   StringsBanks:
   - {fileID: 114193008922070026}
-  stringsBankWriteTime: 637007275485646071
+  stringsBankWriteTime: 637008131790232251
   cacheVersion: 3
 --- !u!114 &114030413064888388
 MonoBehaviour:
@@ -119,6 +118,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 60
   Length: 966
+--- !u!114 &114155536241904086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Eruption
+  guid: bfee5550418b5a4fb87929b63ddd1b7a
+  Banks:
+  - {fileID: 114980590001746184}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 10000
+  Length: 29168
 --- !u!114 &114193008922070026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,11 +154,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Build\Desktop\Master Bank.strings.bank
-  lastModified: 637007275485646071
+  lastModified: 637008131790232251
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1282
+    Value: 1208
   Exists: 1
 --- !u!114 &114196449660037956
 MonoBehaviour:
@@ -233,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/SFX/Lava
-  guid: 1013e1d1f06db048b1e5707873811668
+  guid: b7ec3be77579314d92856214f5073eae
   Banks:
   - {fileID: 114720456099295234}
   - {fileID: 114980590001746184}
@@ -242,8 +264,8 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
-  MaxDistance: 40
-  Length: 237266
+  MaxDistance: 20
+  Length: 233766
 --- !u!114 &114325471863705484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Voices/Male/Attention
-  guid: 143a07f4c6ad6c4d80a41b6bfbd9ef71
+  guid: 2e58d3274d64c1479477b71cb833320a
   Banks:
   - {fileID: 114980590001746184}
   IsStream: 0
@@ -311,7 +333,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 60
+  MaxDistance: 40
   Length: 883
 --- !u!114 &114437913367135116
 MonoBehaviour:
@@ -326,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Voices/Male/Celebration
-  guid: 8ae2e5fe24a4894b9750afdf3ebae218
+  guid: 278716dbfb93294f8605a088d2ba6228
   Banks:
   - {fileID: 114980590001746184}
   IsStream: 0
@@ -334,7 +356,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 60
+  MaxDistance: 40
   Length: 1037
 --- !u!114 &114454192821967252
 MonoBehaviour:
@@ -349,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Voices/Female/Celebration
-  guid: 53b537a5ce50c44bafe6c1b6b2266ac1
+  guid: 0482831cda39fc489d5ac49c1b586189
   Banks:
   - {fileID: 114980590001746184}
   IsStream: 0
@@ -357,7 +379,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 60
+  MaxDistance: 40
   Length: 1316
 --- !u!114 &114466557905979184
 MonoBehaviour:
@@ -372,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Atmos/Ocean
-  guid: b5dd1a82526c4c4c893201aad0ee451c
+  guid: beb10eaff8b62845b2b16e671f50ae06
   Banks:
   - {fileID: 114720456099295234}
   - {fileID: 114980590001746184}
@@ -458,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Voices/Female/Denial
-  guid: 686af3e68b5738418f6b2c0bfe39f48a
+  guid: e7960916f1835e4ea2fc3692417170d9
   Banks:
   - {fileID: 114980590001746184}
   IsStream: 0
@@ -466,7 +488,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 60
+  MaxDistance: 40
   Length: 659
 --- !u!114 &114602021307757796
 MonoBehaviour:
@@ -507,7 +529,6 @@ MonoBehaviour:
   guid: e7960916f1835e4ea2fc3692417170d9
   Banks:
   - {fileID: 114720456099295234}
-  - {fileID: 114980590001746184}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -614,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Voices/Female/Attention
-  guid: a1988a5f5a49314da10539ba8d634fcf
+  guid: 1d8b84dbaa3c394d9009ee8bf8db2d8b
   Banks:
   - {fileID: 114980590001746184}
   IsStream: 0
@@ -622,8 +643,31 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 60
+  MaxDistance: 40
   Length: 966
+--- !u!114 &114865396976206858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Score
+  guid: aa3f62033ce8d94f909dc71adf9976b1
+  Banks:
+  - {fileID: 114980590001746184}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 182856
 --- !u!114 &114879984046712462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Atmos/Burning
-  guid: 4099e4601d786b42b2223454bd73b89e
+  guid: 9535a40a951bab48be1a0662adb055a4
   Banks:
   - {fileID: 114720456099295234}
   - {fileID: 114980590001746184}
@@ -647,7 +691,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 42477
+  Length: 41977
 --- !u!114 &114903475024154666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,7 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Voices/Male/Denial
-  guid: 0ede26bbeafcbf43891cb9f68c8a8ce6
+  guid: 0e4976527c73ab4581eb92fac2f2291d
   Banks:
   - {fileID: 114980590001746184}
   IsStream: 0
@@ -732,7 +776,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 60
+  MaxDistance: 40
   Length: 864
 --- !u!114 &114980590001746184
 MonoBehaviour:
@@ -747,11 +791,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Unity\LavaEscape\Assets\Audio\Build\Desktop\Master Bank.bank
-  lastModified: 637007275485635831
+  lastModified: 637008131790172426
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 8904224
+    Value: 11439616
   Exists: 1
 --- !u!114 &114986780582747720
 MonoBehaviour:

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Assets\Audio\LavaEscapeAudio.fspro
-  SourceProjectPathUnformatted: Assets\Audio\LavaEscapeAudio.fspro
+  sourceProjectPath: Assets\Audio\LavaEscapeAudio2.fspro
+  SourceProjectPathUnformatted: Assets\Audio\LavaEscapeAudio2.fspro
   SourceBankPathUnformatted: Assets\Audio\Build
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0

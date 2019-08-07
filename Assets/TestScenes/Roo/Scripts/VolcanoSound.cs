@@ -12,7 +12,7 @@ public class VolcanoSound : MonoBehaviour
 
     void PlayEruptionSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/Eruption01", this.gameObject);
+        FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/Eruption", this.gameObject);
     }
 
 }

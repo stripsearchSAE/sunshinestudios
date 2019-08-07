@@ -78,7 +78,6 @@ public class PlayerPlatformScript : MonoBehaviour
                     hasCalledSound = true;
                     BaseAudioManager.Playsound("startOcean");
                     BaseAudioManager.Playsound("stopVolcano");
-                    FMODUnity.RuntimeManager.PlayOneShotAttached("event:/SFX/Eruption01", this.gameObject); // this is to test timing.. move script to appropriate place after
                 }
 
                 transform.position = Vector3.SmoothDamp(transform.position, erruptionViewPoint.transform.position, ref velocity, platformDampeningErruption);
