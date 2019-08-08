@@ -18,7 +18,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public bool hasLanded = false;
     private bool _isEnabled = true; // set this to false to stop player clicking on explorer to active ie. during an animation.
     public float explorerTimeOut = 5;
-    public Renderer _rend;
+    // public Renderer _rend;
 
     [Header("purely old jump method related")]
     private Transform _target;
@@ -54,7 +54,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public void goMoving(Vector3 target)
     {
         isTravelling = true;
-        explorer.isStopped = false; 
+        // explorer.isStopped = false; 
         explorer.SetDestination(target);
     }
     public void goIdle()
@@ -93,12 +93,12 @@ public class ExplorerMovementScript : MonoBehaviour
             AudioPlayer.PlayVoice("Jump");
             StartCoroutine(ResetJumpSound());
         }
-        /*
-        if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
-        {
-            explorer.isStopped=true;
-        }
         
+        // if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
+       // {
+        //    explorer.isStopped=true;
+       // }
+        /*
         if (isActive) { _rend.material.color = Color.green; }
         else
         {

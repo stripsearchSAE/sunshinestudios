@@ -33,7 +33,7 @@ public class GoControllerScript : BaseController
         RaycastHit hit; 
         bool hitSomething = false; 
          
-        hitSomething = Physics.Raycast(transform.position, transform.forward, out hit, 100f); 
+        hitSomething = Physics.Raycast(transform.position, transform.forward, out hit, 50f); 
      
         if (!hitSomething) return;
         Debug.Log("got parsed hit somehting");

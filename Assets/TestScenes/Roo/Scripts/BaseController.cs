@@ -8,7 +8,7 @@ public class BaseController : MonoBehaviour
 {
     public GameObject explorer;
     ExplorerMovementScript controlledExplorer;
-    public List<ExplorerMovementScript> controlled;
+    // public List<ExplorerMovementScript> controlled;
 
 
     void Start()
