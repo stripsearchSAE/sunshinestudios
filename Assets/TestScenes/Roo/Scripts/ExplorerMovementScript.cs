@@ -12,7 +12,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public ExplorerIdleState Idle;
     public ExplorerMovingState Moving;
     */
-    public bool isActive = false; // change by clicking on self. only active navagents will move
+    public bool isActive = false; // change by clicking on self. only active navagents will move - obsolete
     public bool isTravelling = false;
     public bool isJumping = false;
     public bool hasLanded = false;
@@ -45,7 +45,7 @@ public class ExplorerMovementScript : MonoBehaviour
     void Start()
     {
         explorer = GetComponent<NavMeshAgent>();
-        _rend.material.color = Color.black;
+        // _rend.material.color = Color.black;
         explorer.stoppingDistance = explorerStoppingDistance;
         AudioPlayer = GetComponent<PlayerAudio>();
         animatingModel = GetComponent<Animator>();
@@ -66,6 +66,7 @@ public class ExplorerMovementScript : MonoBehaviour
 
     private void Update()
     {
+      
         /*
         if (checkForStartPointReached)
         {
@@ -92,19 +93,19 @@ public class ExplorerMovementScript : MonoBehaviour
             AudioPlayer.PlayVoice("Jump");
             StartCoroutine(ResetJumpSound());
         }
-
-        if (isTravelling && Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
+        /*
+        if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
         {
-            goIdle();
+            explorer.isStopped=true;
         }
-
+        
         if (isActive) { _rend.material.color = Color.green; }
         else
         {
             _rend.material.color = Color.black;
             explorer.isStopped = true;
             isTravelling = false;
-        }
+        } */
     }
 
     public IEnumerator Denial()
@@ -115,7 +116,8 @@ public class ExplorerMovementScript : MonoBehaviour
 
         yield return new WaitForSeconds(waitForDenialAnimation);
         _isEnabled = true;
-        goIdle();
+
+        //goIdle();
     }
 
     public IEnumerator ResetJumpSound()

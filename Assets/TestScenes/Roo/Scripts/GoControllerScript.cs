@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class GoControllerScript : BaseController
 {
     LineRenderer _line;
-    public GameObject explorer;
+    // public GameObject explorer;
     float maxDistance;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class GoControllerScript : BaseController
         if (!hitSomething) return;
         Debug.Log("got parsed hit somehting");
 
-        if(Vector3.Distance(explorer.transform.position, hit.transform.position) < maxDistance && hit.collider.tag == "Walkable") _line.material.color = Color.green;
+        if(Vector3.Distance(explorer.transform.position, hit.transform.position) < maxDistance && hit.collider.tag == "Walkable" ) _line.material.color = Color.green;
 
 
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
