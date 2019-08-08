@@ -6,10 +6,13 @@ using UnityEngine.AI;
 public class GoControllerScript : BaseController
 {
     LineRenderer _line;
+    public GameObject explorer;
+    float maxDistance;
     // Start is called before the first frame update
     void Start()
     {
         _line = GetComponent<LineRenderer>();
+        maxDistance = explorer.GetComponent<ExplorerMovementScript>().maxDistancePerTurn;
     }
 
     // Update is called once per frame
@@ -23,21 +26,21 @@ public class GoControllerScript : BaseController
             return;
         }
         _line.enabled = true;
-        //transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote);
-        
+        _line.material.color = Color.red;
+
+
+        //transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTrackedRemote); 
         RaycastHit hit; 
-        // NavMeshHit navHit; 
         bool hitSomething = false; 
          
         hitSomething = Physics.Raycast(transform.position, transform.forward, out hit, 100f); 
      
         if (!hitSomething) return;
         Debug.Log("got parsed hit somehting");
-        // bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas); 
-        // Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green); 
-         
-         
-     
+
+        if(Vector3.Distance(explorer.transform.position, hit.transform.position) < maxDistance && hit.collider.tag == "Walkable") _line.material.color = Color.green;
+
+
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
             clickControl(hit);
