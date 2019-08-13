@@ -31,6 +31,6 @@ public class ParticleBehavior : MonoBehaviour
         Smoke.GetComponent<ParticleSystem>().Stop();
         
         LavaErrupt.SetActive(true);
-        Rocks.SetActive(true);
+        // Rocks.SetActive(true);
     }
 }
