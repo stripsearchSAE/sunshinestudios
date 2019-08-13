@@ -7,19 +7,19 @@ using UnityEngine.Experimental.UIElements;
 public class BaseController : MonoBehaviour
 {
     public GameObject explorer;
-    ExplorerMovementScript controlledExplorer;
-    // public List<ExplorerMovementScript> controlled;
+    //ExplorerMovementScript controlledExplorer;
+    public List<ExplorerMovementScript> controlled;
 
 
     void Start()
     {
         explorer = GameObject.Find("Explorer");
-        controlledExplorer = explorer.GetComponent<ExplorerMovementScript>();
+        //controlledExplorer = explorer.GetComponent<ExplorerMovementScript>();
     }
     public void clickControl(RaycastHit hit)
     {
 
-        NavMeshHit tempHit;
+       /* NavMeshHit tempHit;
         NavMesh.SamplePosition(hit.point, out tempHit, 2.0f, NavMesh.AllAreas);
 
         float dist = Vector3.Distance(tempHit.position, explorer.transform.position);
@@ -29,9 +29,9 @@ public class BaseController : MonoBehaviour
             return;
         }
 
-        controlledExplorer.goMoving(tempHit.position);
+        controlledExplorer.goMoving(tempHit.position); */
 
-        /*
+        
                 if (hit.collider.tag == "Explorer") // check to see if ray hit self 
                 {
                     ExplorerMovementScript temp = hit.collider.GetComponent<ExplorerMovementScript>(); 
@@ -111,6 +111,6 @@ public class BaseController : MonoBehaviour
                         StartCoroutine(explorer.Denial());
                         controlled.Remove(explorer);
                     } 
-                }*/
+                }
     }
 }

@@ -54,7 +54,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public void goMoving(Vector3 target)
     {
         isTravelling = true;
-        // explorer.isStopped = false; 
+        explorer.isStopped = false; 
         explorer.SetDestination(target);
     }
     public void goIdle()
@@ -117,7 +117,7 @@ public class ExplorerMovementScript : MonoBehaviour
         yield return new WaitForSeconds(waitForDenialAnimation);
         _isEnabled = true;
 
-        //goIdle();
+        goIdle();
     }
 
     public IEnumerator ResetJumpSound()
