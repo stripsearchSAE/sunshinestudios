@@ -4834,7 +4834,7 @@ PrefabInstance:
     - target: {fileID: 1223669376183764490, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1223669376183764493, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
@@ -5024,7 +5024,7 @@ PrefabInstance:
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 9
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
@@ -5090,6 +5090,16 @@ PrefabInstance:
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime2
       value: 65150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b91ed0c43b15c3d4284568789948d84a, type: 3}
@@ -25952,6 +25962,7 @@ GameObject:
   - component: {fileID: 1400928054}
   - component: {fileID: 1400928055}
   - component: {fileID: 1400928050}
+  - component: {fileID: 1400928056}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Untagged
@@ -26072,6 +26083,20 @@ MonoBehaviour:
   OverrideAttenuation: 1
   OverrideMinDistance: 3
   OverrideMaxDistance: 15
+--- !u!114 &1400928056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400928049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d28cb150ad86f4a8100312a4aea7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uvAnimationRate: {x: 0.05, y: 0}
+  textureName: _MainTex
 --- !u!1001 &1403096262
 PrefabInstance:
   m_ObjectHideFlags: 0
