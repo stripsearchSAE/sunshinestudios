@@ -7,6 +7,7 @@ using UnityEngine.Experimental.UIElements;
 public class BaseController : MonoBehaviour
 {
     public GameObject explorer;
+    public GameObject lava;
     //ExplorerMovementScript controlledExplorer;
     public List<ExplorerMovementScript> controlled;
 
@@ -14,6 +15,7 @@ public class BaseController : MonoBehaviour
     void Start()
     {
         explorer = GameObject.Find("Explorer");
+        explorer = GameObject.Find("Lava");
         //controlledExplorer = explorer.GetComponent<ExplorerMovementScript>();
     }
     public void clickControl(RaycastHit hit)
@@ -93,7 +95,7 @@ public class BaseController : MonoBehaviour
 
                         // josh is this in the correct spot?
                         float dist = Vector3.Distance(tempHit.position, explorer.transform.position);
-                        if(dist > explorer.maxDistancePerTurn)
+                        if(dist > explorer.maxDistancePerTurn || tempHit.position.y <= lava.transform.position.y)
                         {
                             StartCoroutine(explorer.Denial());
                             controlled.Remove(explorer);
