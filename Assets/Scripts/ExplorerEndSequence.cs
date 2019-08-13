@@ -38,7 +38,7 @@ public class ExplorerEndSequence : MonoBehaviour
         {
             NavMeshAgent Expl = Movement.explorer;
             Expl.destination = endPosition.position;
-           // StartCoroutine(LastPoint(Expl));
+            BaseAudioManager.Playsound("Level10");
         }
 
     }
@@ -49,7 +49,7 @@ public class ExplorerEndSequence : MonoBehaviour
             Debug.Log("Howdy");
             Explorer1.GetComponent<NavMeshAgent>().enabled = false;
             Explorer1.transform.parent = Platform.transform;
-           if (StartFinalSequence != null) StartFinalSequence();
+        if (StartFinalSequence != null) StartFinalSequence();
 
         yield return null;
     }

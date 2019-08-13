@@ -24,16 +24,19 @@ public class BaseAudioManager : MonoBehaviour
      ***************************************************************************************************/
 
    
-   public static FMOD.Studio.EventInstance volcanoAtmos, oceanAtmos; // atmos from Score bank
-                       
-   // below is examples of links to parameters inside of an eventinstance
-   // name the parameters for wind variables
-   // public static FMOD.Studio.ParameterInstance WindIntensity; // name the parameter for wind intensity
-   // public static FMOD.Studio.ParameterInstance WindVol; // name the parameter for wind Volume
+    public static FMOD.Studio.EventInstance volcanoAtmos, oceanAtmos; // atmos variables
+    public static FMOD.Studio.EventInstance score;
+
+    public static FMOD.Studio.ParameterInstance musicLevel; // parameter to control reactive music
+
+    // below is examples of links to parameters inside of an eventinstance
+    // name the parameters for wind variables
+    // public static FMOD.Studio.ParameterInstance WindIntensity; // name the parameter for wind intensity
+    // public static FMOD.Studio.ParameterInstance WindVol; // name the parameter for wind Volume
 
 
-   // Keep music rolling between scenes. Will not destroy onload unless there is a double.
-   static BaseAudioManager instance = null;
+    // Keep music rolling between scenes. Will not destroy onload unless there is a double.
+    static BaseAudioManager instance = null;
 
    void Awake()
    {
@@ -52,22 +55,18 @@ public class BaseAudioManager : MonoBehaviour
    void Start()
    {
        // below we connect to all sounds in FMOD for the game
-
        // atmos bank
        volcanoAtmos = FMODUnity.RuntimeManager.CreateInstance("event:/Atmos/Burning");
        oceanAtmos = FMODUnity.RuntimeManager.CreateInstance("event:/Atmos/Ocean");
 
        // music
-       // music = FMODUnity.RuntimeManager.CreateInstance("event:/Score/Music");
+       score = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Score");
 
 
-       // connect to sound parameters
+        // connect to sound parameters
+       score.getParameter("GameLevel", out musicLevel);
 
-       // wind.getParameter("WindIntensity", out WindIntensity); // connect to WindIntensity Parameter in Wind Sound
-       // wind.getParameter("Strength", out WindVol); // connect to Strength Parameter in Wind Sound and output WindVol
-       // music.getParameter("GameLevel", out gameLevel);
-       
-
+       score.start();
        volcanoAtmos.start(); // start the volcano atmos
        // atmosExploring.start(); // start exploring atmos
    }
@@ -75,8 +74,11 @@ public class BaseAudioManager : MonoBehaviour
    // Below is the switch statement for all the possible sounds used in the game
    public static void Playsound(string clip)
    {
-       switch (clip) { case ("startOcean"): oceanAtmos.start(); break; }
-       switch (clip) { case ("stopVolcano"): volcanoAtmos.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); break; }
-   }
+        switch (clip) { case ("startOcean"): oceanAtmos.start(); break; }
+        switch (clip) { case ("stopVolcano"): volcanoAtmos.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); break; }
+        switch (clip) { case ("stopMusic"): score.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); break; }
+        switch (clip) { case ("Level1"): musicLevel.setValue(1f); break; }
+        switch (clip) { case ("Level10"): musicLevel.setValue(10f); break; }
+    }
    
 }
