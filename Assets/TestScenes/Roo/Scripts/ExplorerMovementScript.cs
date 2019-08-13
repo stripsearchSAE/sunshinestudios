@@ -55,6 +55,7 @@ public class ExplorerMovementScript : MonoBehaviour
 
     public void goMoving(Vector3 target)
     {
+        isActive = false;
         isTravelling = true;
         explorer.isStopped = false;
         explorer.SetDestination(target);
@@ -62,7 +63,6 @@ public class ExplorerMovementScript : MonoBehaviour
     public void goIdle()
     {
         isActive = false;
-        
         isTravelling = false;
         explorer.isStopped = true;
     }
@@ -97,17 +97,18 @@ public class ExplorerMovementScript : MonoBehaviour
             StartCoroutine(ResetJumpSound());
         }
 
-        if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
+        /*if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
         {
             explorer.isStopped = true;
-            Spot.SetActive(false);
-        }
+            //goIdle();
+            //Spot.SetActive(false);
+        } */
 
         if (isActive) { Spoton = true; }
         else
         {
             Spoton = false;
-            explorer.isStopped = true;
+            //explorer.isStopped = true;
             isTravelling = false;
         }
 
