@@ -18,13 +18,15 @@ public class ExplorerMovementScript : MonoBehaviour
     public bool hasLanded = false;
     private bool _isEnabled = true; // set this to false to stop player clicking on explorer to active ie. during an animation.
     public float explorerTimeOut = 5;
+    public bool Spoton;
+    public GameObject Spot;
     // public Renderer _rend;
 
     [Header("purely old jump method related")]
     private Transform _target;
     public float ReachedStartPointDistance = 0.5f;
     public float AddToJumpHeight;
-    
+
     [Header("Navmesh Agent")]
     public NavMeshAgent explorer;
     public float explorerStoppingDistance;
@@ -54,19 +56,20 @@ public class ExplorerMovementScript : MonoBehaviour
     public void goMoving(Vector3 target)
     {
         isTravelling = true;
-        explorer.isStopped = false; 
+        explorer.isStopped = false;
         explorer.SetDestination(target);
     }
     public void goIdle()
     {
         isActive = false;
+        
         isTravelling = false;
-        explorer.isStopped = true; 
+        explorer.isStopped = true;
     }
 
     private void Update()
     {
-      
+
         /*
         if (checkForStartPointReached)
         {
@@ -81,32 +84,47 @@ public class ExplorerMovementScript : MonoBehaviour
 
         if (animatingModel)
         {
-            animatingModel.SetBool("Moving",isTravelling);
-            animatingModel.SetBool("Jumping",isJumping);
-            animatingModel.SetBool("Landing",hasLanded);
+            animatingModel.SetBool("Moving", isTravelling);
+            animatingModel.SetBool("Jumping", isJumping);
+            animatingModel.SetBool("Landing", hasLanded);
             if (hasLanded) hasLanded = false;
         }
-    
-        if(explorer.isOnOffMeshLink && jumpSoundEnabled)
+
+        if (explorer.isOnOffMeshLink && jumpSoundEnabled)
         {
             jumpSoundEnabled = false;
             AudioPlayer.PlayVoice("Jump");
             StartCoroutine(ResetJumpSound());
         }
-        
-        // if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
-       // {
-        //    explorer.isStopped=true;
-       // }
-        /*
-        if (isActive) { _rend.material.color = Color.green; }
+
+        if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
+        {
+            explorer.isStopped = true;
+            Spot.SetActive(false);
+        }
+
+        if (isActive) { Spoton = true; }
         else
         {
-            _rend.material.color = Color.black;
+            Spoton = false;
             explorer.isStopped = true;
             isTravelling = false;
-        } */
+        }
+
+        if (Spoton == true)
+        {
+            Spot.SetActive(true);
+        }
+        else
+        {
+            Spot.SetActive(false);
+            
+        }
+
+       
     }
+    
+
 
     public IEnumerator Denial()
     {

@@ -95,7 +95,7 @@ public class BaseController : MonoBehaviour
 
                         // josh is this in the correct spot?
                         float dist = Vector3.Distance(tempHit.position, explorer.transform.position);
-                        if(dist > explorer.maxDistancePerTurn || tempHit.position.y <= lava.transform.position.y)
+                        if(dist > explorer.maxDistancePerTurn)//|| tempHit.position.y <= lava.transform.position.y)
                         {
                             StartCoroutine(explorer.Denial());
                             controlled.Remove(explorer);
