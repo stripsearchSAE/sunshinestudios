@@ -15,6 +15,7 @@ public class ExplorerMovementScript : MonoBehaviour
     public bool isActive = false; // change by clicking on self. only active navagents will move - obsolete
     public bool isTravelling = false;
     public bool isJumping = false;
+    public bool BoutaJump = false;
     public bool hasLanded = false;
     private bool _isEnabled = true; // set this to false to stop player clicking on explorer to active ie. during an animation.
     public float explorerTimeOut = 5;
@@ -55,13 +56,14 @@ public class ExplorerMovementScript : MonoBehaviour
 
     public void goMoving(Vector3 target)
     {
-        isActive = false;
+        
         isTravelling = true;
         explorer.isStopped = false;
         explorer.SetDestination(target);
     }
     public void goIdle()
     {
+        Debug.Log("howdy");
         isActive = false;
         isTravelling = false;
         explorer.isStopped = true;
@@ -87,6 +89,7 @@ public class ExplorerMovementScript : MonoBehaviour
             animatingModel.SetBool("Moving", isTravelling);
             animatingModel.SetBool("Jumping", isJumping);
             animatingModel.SetBool("Landing", hasLanded);
+            animatingModel.SetBool("About to jump", BoutaJump);
             if (hasLanded) hasLanded = false;
         }
 
@@ -94,22 +97,26 @@ public class ExplorerMovementScript : MonoBehaviour
         {
             jumpSoundEnabled = false;
             AudioPlayer.PlayVoice("Jump");
+            isJumping = true;
             StartCoroutine(ResetJumpSound());
+            
         }
 
         /*if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
         {
             explorer.isStopped = true;
-            //goIdle();
-            //Spot.SetActive(false);
-        } */
+            goIdle();
+            
+        } 
+        */
 
         if (isActive) { Spoton = true; }
         else
         {
             Spoton = false;
             //explorer.isStopped = true;
-            isTravelling = false;
+            
+            
         }
 
         if (Spoton == true)
@@ -119,6 +126,7 @@ public class ExplorerMovementScript : MonoBehaviour
         else
         {
             Spot.SetActive(false);
+            
             
         }
 

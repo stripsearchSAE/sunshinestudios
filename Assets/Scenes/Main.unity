@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26439965, g: 0.62499374, b: 0.98973054, a: 1}
+  m_IndirectSpecularColor: {r: 0.26386055, g: 0.62431365, b: 0.99999946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4914,7 +4914,7 @@ PrefabInstance:
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 8.45
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
@@ -5039,7 +5039,7 @@ PrefabInstance:
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 16.66
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
@@ -5109,7 +5109,7 @@ PrefabInstance:
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
         type: 3}
@@ -5295,6 +5295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: RotationModule.curve.minCurve.m_Curve.Array.data[0].value
       value: 0.2548275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223669376183764492, guid: b91ed0c43b15c3d4284568789948d84a,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b91ed0c43b15c3d4284568789948d84a, type: 3}
@@ -24901,7 +24906,7 @@ GameObject:
   - component: {fileID: 1326108690}
   - component: {fileID: 1326108689}
   - component: {fileID: 1326108688}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (48)
   m_TagString: Walkable
   m_Icon: {fileID: 0}
@@ -26160,7 +26165,6 @@ GameObject:
   - component: {fileID: 1400928051}
   - component: {fileID: 1400928054}
   - component: {fileID: 1400928055}
-  - component: {fileID: 1400928050}
   - component: {fileID: 1400928056}
   m_Layer: 0
   m_Name: Lava
@@ -26169,19 +26173,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1400928050
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400928049}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 40.79256, z: 1.0000002}
-  m_Center: {x: 0.000000043483233, y: -0.04260487, z: -0.000000086966466}
 --- !u!23 &1400928051
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32855,7 +32846,7 @@ GameObject:
   - component: {fileID: 1957621371}
   - component: {fileID: 1957621370}
   - component: {fileID: 1957621369}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MusicTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
