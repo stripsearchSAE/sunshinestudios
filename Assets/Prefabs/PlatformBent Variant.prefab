@@ -101,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 2593560574324201385, guid: 58d07079970f4f942a3b2de45640d15f,
         type: 3}
       propertyPath: m_Name
-      value: PlatformBent
+      value: PlatformBent Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2593560574324201385, guid: 58d07079970f4f942a3b2de45640d15f,
         type: 3}
@@ -262,6 +262,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114945673767702672, guid: 58d07079970f4f942a3b2de45640d15f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0542
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694557527002359045, guid: 58d07079970f4f942a3b2de45640d15f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694557527002359045, guid: 58d07079970f4f942a3b2de45640d15f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d07079970f4f942a3b2de45640d15f, type: 3}
