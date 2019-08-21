@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public float timeToWaitForReset;
     public float fadeInTime;
     [Header("use Music time for global fadeout")]
-    public float timeForMusicFadeout = 3.01f;
+    [Range(3.01f, 30f)] public float timeForMusicFadeout = 3.01f;
     
     // Start is called before the first frame update
     void Start()
