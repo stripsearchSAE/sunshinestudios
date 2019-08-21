@@ -21,6 +21,8 @@ public class ExplorerMovementScript : MonoBehaviour
     public float explorerTimeOut = 5;
     public bool Spoton;
     public GameObject Spot;
+    public GameObject ParticleManage;
+    float volcanoWaitTime;
     // public Renderer _rend;
 
     [Header("purely old jump method related")]
@@ -42,8 +44,14 @@ public class ExplorerMovementScript : MonoBehaviour
     public Animator animatingModel;
     PlayerAudio AudioPlayer;
 
-    private bool jumpSoundEnabled = true;
+    [Header("Celebration offset to volcano explosion")]
+    [Range(-5f, 5f)] public float celebrationOffset = 3f;
 
+    private bool jumpSoundEnabled = true;
+    void Awake()
+    {
+        ExplorerEndSequence.StartFinalSequence += Celebration;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +60,7 @@ public class ExplorerMovementScript : MonoBehaviour
         explorer.stoppingDistance = explorerStoppingDistance;
         AudioPlayer = GetComponent<PlayerAudio>();
         animatingModel = GetComponent<Animator>();
+        volcanoWaitTime = ParticleManage.GetComponent<ParticleBehavior>().timeToWait;
     }
 
     public void goMoving(Vector3 target)
@@ -70,6 +79,10 @@ public class ExplorerMovementScript : MonoBehaviour
         explorer.isStopped = true;
     }
 
+    void Celebration()
+    {
+        StartCoroutine(WaitToCelebrate());
+    }
     private void Update()
     {
         if (animatingModel)
@@ -112,6 +125,12 @@ public class ExplorerMovementScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         jumpSoundEnabled = true;
+    }
+
+    IEnumerator WaitToCelebrate()
+    {
+        yield return new WaitForSeconds(volcanoWaitTime + celebrationOffset);
+        AudioPlayer.PlayVoice("Celebration");
     }
 
 }
