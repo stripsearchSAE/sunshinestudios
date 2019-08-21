@@ -75,7 +75,10 @@ public class BaseAudioManager : MonoBehaviour
    public static void Playsound(string clip)
    {
         switch (clip) { case ("startOcean"): oceanAtmos.start(); break; }
+        switch (clip) { case ("stopOcean"): oceanAtmos.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); break; }
+        switch (clip) { case ("startVolcano"): volcanoAtmos.start(); break; }
         switch (clip) { case ("stopVolcano"): volcanoAtmos.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); break; }
+        switch (clip) { case ("startMusic"): score.start(); break; }
         switch (clip) { case ("stopMusic"): score.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); break; }
         switch (clip) { case ("Level1"): musicLevel.setValue(1f); break; }
         switch (clip) { case ("Level10"): musicLevel.setValue(10f); break; }
