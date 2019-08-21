@@ -16,19 +16,12 @@ public class ParticleBehavior : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            GameObject.DontDestroyOnLoad(gameObject);
-        }
-    }
-    void Start()
-    {
         ExplorerEndSequence.StartFinalSequence += VolcanoSequence;
+    }
+
+    private void OnDestroy()
+    {
+        ExplorerEndSequence.StartFinalSequence -= VolcanoSequence;
     }
 
     void VolcanoSequence()
