@@ -11,6 +11,21 @@ public class ParticleBehavior : MonoBehaviour
 
     public float timeToWait;
     // Start is called before the first frame update
+
+    static ParticleBehavior instance = null;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            GameObject.DontDestroyOnLoad(gameObject);
+        }
+    }
     void Start()
     {
         ExplorerEndSequence.StartFinalSequence += VolcanoSequence;

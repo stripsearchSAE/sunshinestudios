@@ -12,10 +12,11 @@ public class ExplorerEndSequence : MonoBehaviour
     private ExplorerMovementScript Movement;
     public GameObject Explorer1;
     public GameObject Platform;
-    bool Final = false;
+    public static bool boolFinal = false;
 
     public float distanceCheck = 0.1f;
     // Start is called before the first frame update
+
     void Start()
     {
 
@@ -25,9 +26,9 @@ public class ExplorerEndSequence : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(Explorer1.transform.position, endPosition.position) < distanceCheck && !Final || Input.GetKeyDown(KeyCode.Space))
+        if (Vector3.Distance(Explorer1.transform.position, endPosition.position) < distanceCheck && !boolFinal || Input.GetKeyDown(KeyCode.Space))
         {
-            Final = true;
+            boolFinal = true;
             StartCoroutine(LastPoint());
         }
     }
