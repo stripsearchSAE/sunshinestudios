@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public float fadeInTime;
     [Header("use Music time for global fadeout")]
     [Range(3.01f, 30f)] public float timeForMusicFadeout = 3.01f;
-    public float timeBeforeApplicationQuit = 1f;
+    public float timeBeforeApplicationQuit = 1.5f;
 
     void Awake()
     {
@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Activate(blackoutCanvas, timeForMusicFadeout));
         yield return new WaitForSeconds(timeForMusicFadeout);
         BaseAudioManager.Playsound("stopOcean");
-        BaseAudioManager.Playsound("startVolcano");
-        BaseAudioManager.Playsound("Level1");
-        BaseAudioManager.Playsound("startMusic");
+        //BaseAudioManager.Playsound("startVolcano");
+        //BaseAudioManager.Playsound("Level1");
+        //BaseAudioManager.Playsound("startMusic");
         ExplorerEndSequence.boolFinal = false;
         yield return new WaitForSeconds(timeBeforeApplicationQuit);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // Application.Quit();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Application.Quit();
     }
 
     IEnumerator Deactivate(CanvasGroup _panel, float _transitionTime)
