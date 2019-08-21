@@ -28,12 +28,29 @@ MonoBehaviour:
   - {fileID: 114466557905979184}
   - {fileID: 114155536241904086}
   - {fileID: 114865396976206858}
+  - {fileID: 114703792162325474}
   MasterBanks:
   - {fileID: 114340170341949218}
   StringsBanks:
   - {fileID: 114193008922070026}
-  stringsBankWriteTime: 637013089337693178
+  stringsBankWriteTime: 637020061546080289
   cacheVersion: 3
+--- !u!114 &114018899705473428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GameLevel
+  Min: 0
+  Max: 10
+  Default: 0
 --- !u!114 &114030413064888388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +156,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 10000
-  Length: 30168
+  Length: 29868
 --- !u!114 &114193008922070026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,11 +170,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Build\Desktop\Master Bank.strings.bank
-  lastModified: 637013089337693178
+  lastModified: 637020061546080289
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1210
+    Value: 1246
   Exists: 1
 --- !u!114 &114196449660037956
 MonoBehaviour:
@@ -317,11 +334,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Unity\LavaEscape\Assets\Audio\Build\Desktop\Master Bank.bank
-  lastModified: 637013089337653316
+  lastModified: 637020061546030427
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 11421760
+    Value: 11441600
   Exists: 1
 --- !u!114 &114363033184671874
 MonoBehaviour:
@@ -415,6 +432,22 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 40
   Length: 1316
+--- !u!114 &114464899886201840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GameLevel
+  Min: 0
+  Max: 10
+  Default: 0
 --- !u!114 &114466557905979184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +643,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 29168
+--- !u!114 &114703792162325474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Voices/Female/Jump
+  guid: 01d159bbd2c7764faae6ecfb38148e32
+  Banks:
+  - {fileID: 114340170341949218}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 40
+  Length: 816
 --- !u!114 &114720456099295234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,7 +792,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114536784795930356}
+  - {fileID: 114018899705473428}
   MinDistance: 0
   MaxDistance: 0
   Length: 182856

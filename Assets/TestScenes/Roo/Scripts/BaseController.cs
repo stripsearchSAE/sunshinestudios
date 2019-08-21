@@ -11,12 +11,20 @@ public class BaseController : MonoBehaviour
     //ExplorerMovementScript controlledExplorer;
     public List<ExplorerMovementScript> controlled;
 
-
     void Start()
     {
         explorer = GameObject.Find("Explorer");
         explorer = GameObject.Find("Lava");
         //controlledExplorer = explorer.GetComponent<ExplorerMovementScript>();
+        //maxDistance = explorer.GetComponent<ExplorerMovementScript>().maxDistancePerTurn;
+    }
+
+    public void ShowAvailable(RaycastHit hit2)
+    {
+        if(hit2.collider.tag=="Walkable")
+        {
+            hit2.collider.GetComponent<PlatformController>().MakeBallActive(hit2);
+        }
     }
     public void clickControl(RaycastHit hit)
     {

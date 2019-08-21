@@ -15,7 +15,11 @@ public class MouseInput : BaseController
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // set ray from camera to mouse position 
         hitSomething = Physics.Raycast(ray, out hit, 100f); 
      
-        if (!hitSomething) return; 
+        if (!hitSomething) return;
+
+        ShowAvailable(hit);
+            
+        Debug.Log(hit.collider.tag);
      
         //bool blocked = NavMesh.Raycast(transform.position, hit.point, out navHit, NavMesh.AllAreas); 
         //Debug.DrawLine(transform.position, hit.point, blocked ? Color.red : Color.green); 

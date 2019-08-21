@@ -7,12 +7,12 @@ public class GoControllerScript : BaseController
 {
     LineRenderer _line;
     // public GameObject explorer;
-    float maxDistance;
+    //float maxDistance;
     // Start is called before the first frame update
     void Start()
     {
         _line = GetComponent<LineRenderer>();
-        maxDistance = explorer.GetComponent<ExplorerMovementScript>().maxDistancePerTurn;
+        //maxDistance = explorer.GetComponent<ExplorerMovementScript>().maxDistancePerTurn;
     }
 
     // Update is called once per frame
@@ -36,9 +36,9 @@ public class GoControllerScript : BaseController
         hitSomething = Physics.Raycast(transform.position, transform.forward, out hit, 50f); 
      
         if (!hitSomething) return;
-        Debug.Log("got parsed hit somehting");
 
-        if(Vector3.Distance(explorer.transform.position, hit.transform.position) < maxDistance && hit.collider.tag == "Walkable" ) _line.material.color = Color.green;
+        ShowAvailable(hit);
+        
 
 
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))

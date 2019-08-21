@@ -58,6 +58,7 @@ public class ExplorerMovementScript : MonoBehaviour
     {
         
         isTravelling = true;
+        isActive = false;
         explorer.isStopped = false;
         explorer.SetDestination(target);
     }
@@ -71,22 +72,9 @@ public class ExplorerMovementScript : MonoBehaviour
 
     private void Update()
     {
-
-        /*
-        if (checkForStartPointReached)
-        {
-            var distance = (_transform.position - JumpStartPoint).sqrMagnitude; // originally _tranform.position
-
-            if (distance <= ReachedStartPointDistance * ReachedStartPointDistance)
-            {
-                checkForStartPointReached = false;
-            }
-        }
-        */
-
         if (animatingModel)
         {
-            animatingModel.SetBool("Moving", isTravelling);
+            animatingModel.SetBool("Moving", explorer.velocity.magnitude>0f);
             animatingModel.SetBool("Jumping", isJumping);
             animatingModel.SetBool("Landing", hasLanded);
             animatingModel.SetBool("About to jump", BoutaJump);
@@ -102,38 +90,11 @@ public class ExplorerMovementScript : MonoBehaviour
             
         }
 
-        /*if (Vector3.Distance(transform.position, explorer.destination) < endPointTolerance)
-        {
-            explorer.isStopped = true;
-            goIdle();
-            
-        } 
-        */
-
-        if (isActive) { Spoton = true; }
-        else
-        {
-            Spoton = false;
-            //explorer.isStopped = true;
-            
-            
-        }
-
-        if (Spoton == true)
-        {
-            Spot.SetActive(true);
-        }
-        else
-        {
-            Spot.SetActive(false);
-            
-            
-        }
-
-       
+        Spot.SetActive(true);
+        if (isActive) return;
+        Spot.SetActive(false);
     }
-    
-
+   
 
     public IEnumerator Denial()
     {
